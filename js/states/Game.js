@@ -4,6 +4,7 @@ Flood.GameState = {
     create: function ()
     {
         //offset: 0:47, 0:75
+        this.currentColour = 'black';
         this.createBoard([['black', 'red'], ['orange', 'pink'], ['blue', 'yellow']]);
     },
     createBoard: function(board)
@@ -12,9 +13,11 @@ Flood.GameState = {
         {
             for(let j=0, len2=board[i].length; j<len2; j++)
             {
-                if(i%2===0)
+                let Item = new Flood.Item(this);
+                
+                if(i % 2 === 0)
                 {
-                    this.add.sprite(0 + (93 * j), 0 + (74.5 * i), board[i][j]);
+                    let item = Item.init([0 + (93 * j), 0 + (74.5 * i), board[i][j]]);
                 }
                 else
                 {
