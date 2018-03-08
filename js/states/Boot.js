@@ -3,8 +3,8 @@ var Flood = Flood || {};
 Flood.BootState = {
 	preload: function(){
 		this.stage.backgroundColor = '#ffffff';
-		this.load.image('loading-background', 'assets/images/loading-background.png');
-		this.load.image('loading-progress', 'assets/images/loading-progress.png');
+		this.load.image('loading-background', 'assets/images/Flood_loading-background.png');
+		this.load.image('loading-progress', 'assets/images/Flood_loading-progress.png');
 	},
 	create: function(){
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

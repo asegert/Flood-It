@@ -36,7 +36,7 @@ Flood.GameState = {
         
         for(let i=0, len=colourArray.length; i<len; i++)
         {
-            let color = this.add.button(0 + (90 * i), 500, colourArray[i], this.checkFlood, colourArray[i]);
+            let color = this.add.button(25 + (90 * i), 500, `${colourArray[i]}Bee`, this.checkFlood, colourArray[i]);
             color.scale.setTo(0.9, 0.9);
         }
     },
@@ -97,7 +97,7 @@ Flood.GameState = {
     },
     checkFlood: function(colourArray)
     {
-        Flood.GameState.currentColour = colourArray.key;
+        Flood.GameState.currentColour = colourArray.key.replace("Bee", "");
         for(let i=0, len1 = Flood.GameState.board.length; i<len1; i++)
         {
             for(let j=0, len2 = Flood.GameState.board[i].length; j<len2; j++)

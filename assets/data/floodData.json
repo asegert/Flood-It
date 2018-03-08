@@ -2,10 +2,12 @@
     "Rounds":[
         {
             "Board":[
-                    ["black", "red", "blue", "purple", "brown"],
-                    ["orange", "pink", "brown", "white", "green"],
-                    ["blue", "yellow", "red", "black", "orange"],
-                    ["blue", "purple", "green", "orange", "yellow"]
+                    ["black", "red", "blue", "purple", "brown", "black", "orange", "green", "yellow", "pink"],
+                    ["orange", "pink", "brown", "white", "green", "red", "blue", "white", "purple"],
+                    ["blue", "yellow", "red", "black", "orange", "brown", "white", "pink", "red", "yellow"],
+                    ["blue", "purple", "green", "orange", "yellow", "blue", "black", "brown", "purple"],
+                    ["pink", "black", "white", "purple", "pink", "red", "pink", "blue", "orange", "green"],
+                    ["green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown"]
             ]
         }
     ]
