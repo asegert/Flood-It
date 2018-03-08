@@ -3,7 +3,12 @@ var Flood = Flood || {};
 Flood.StoryState = {
     create: function ()
     {
-        this.game.state.start('Game');
+        this.add.sprite(0, 0, 'main');
+        let start = this.add.button(550, 500, 'start', function()
+        {
+            this.game.state.start('Game');
+        }, this);
+        start.scale.setTo(0.9, 0.9);
     }
 };
 /*Copyright (C) Wayside Co. - All Rights Reserved

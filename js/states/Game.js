@@ -5,6 +5,7 @@ Flood.GameState = {
     {
         //offset: 0:47, 0:75
         this.allData = JSON.parse(this.game.cache.getText('floodData'));
+        this.add.sprite(0, 0, 'bg');
         this.totalFloodiesRemaining = -1;
         this.currentColour = null;
         this.board = this.createBoard(this.allData.Rounds[0].Board);
@@ -21,11 +22,11 @@ Flood.GameState = {
                 this.totalFloodiesRemaining++;
                 if(i % 2 === 0)
                 {
-                    board[i][j] = Item.init([0 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
+                    board[i][j] = Item.init([10 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
                 }
                 else
                 {
-                    board[i][j] = Item.init([47 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
+                    board[i][j] = Item.init([57 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
                 }
             }
         }
