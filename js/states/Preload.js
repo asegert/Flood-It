@@ -29,6 +29,8 @@ Flood.PreloadState = {
         this.load.image('blueBee', 'assets/images/Flood_blueBee.png');
         this.load.image('purpleBee', 'assets/images/Flood_purpleBee.png');
         
+        this.load.spritesheet('beekeeper', 'assets/images/Flood_BeekeeperSprite.png', 548, 610, 5);
+        
         this.load.text('floodData', 'assets/data/floodData.json');
     },
     create: function ()

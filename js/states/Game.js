@@ -118,6 +118,10 @@ Flood.GameState = {
         if(Flood.GameState.totalFloodiesRemaining === 0)
                 {
                     console.log('gameOver');
+                    let beekeeper = Flood.GameState.add.sprite(-500, 0, 'beekeeper');
+                    beekeeper.animations.add('run');
+                    beekeeper.animations.play('run', 15, true);
+                    Flood.GameState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
                 }
     },
     update: function ()
