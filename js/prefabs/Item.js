@@ -13,6 +13,7 @@ Flood.Item = function(state) {
          this.texture = data[2];
          this.x = data[3];
          this.y = data[4];
+         this.group = this.state.switchGroup(data[5], this);
          return this;
      };
      Flood.Item.prototype.createSprite = function(x, y, texture)
@@ -22,10 +23,6 @@ Flood.Item = function(state) {
             this.reColour(this.state.currentColour);
             this.state.getAdjacent(this);
         }, this);
-     };
-     Flood.Item.prototype.switchGroup = function()
-     {
-        
      };
      Flood.Item.prototype.reColour = function()
      {

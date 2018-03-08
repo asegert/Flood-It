@@ -5,6 +5,8 @@ Flood.GameState = {
     {
         //offset: 0:47, 0:75
         this.currentColour = 'black';
+        this.flood = this.add.group();
+        this.floodies = this.add.group();
         this.board = this.createBoard([['black', 'red'], ['orange', 'pink'], ['blue', 'yellow'], ['blue', 'purple']]);
     },
     createBoard: function(board)
@@ -17,11 +19,11 @@ Flood.GameState = {
                 
                 if(i % 2 === 0)
                 {
-                    board[i][j] = Item.init([0 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j]);
+                    board[i][j] = Item.init([0 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
                 }
                 else
                 {
-                    board[i][j] = Item.init([47 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j]);
+                    board[i][j] = Item.init([47 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
                 }
             }
         }
@@ -61,6 +63,22 @@ Flood.GameState = {
         {
             //add to main group
             console.log('add');
+        }
+    },
+    switchGroup: function(group, item)
+    {
+        if(item.group != undefined)
+        {
+            //remove from group
+        }
+        item.group = group;
+        if(group === "floodies")
+        {
+            this.floodies.add(item);
+        }
+        else
+        {
+            this.flood.add(item);
         }
     },
     update: function ()
