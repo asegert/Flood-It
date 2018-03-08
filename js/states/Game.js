@@ -4,10 +4,9 @@ Flood.GameState = {
     create: function ()
     {
         //offset: 0:47, 0:75
-        this.currentColour = 'black';
-        this.flood = this.add.group();
-        this.floodies = this.add.group();
-        this.board = this.createBoard([['black', 'red'], ['orange', 'pink'], ['blue', 'yellow'], ['blue', 'purple']]);
+        this.allData = JSON.parse(this.game.cache.getText('floodData'));
+        this.currentColour = null;
+        this.board = this.createBoard(this.allData.Rounds[0].Board);
         this.createButtons();
         this.board[0][0].group = 'flood';
     },

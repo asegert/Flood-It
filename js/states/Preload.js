@@ -17,6 +17,8 @@ Flood.PreloadState = {
         this.load.image('green', 'assets/images/grreen.png');
         this.load.image('blue', 'assets/images/blue.png');
         this.load.image('purple', 'assets/images/purple.png');
+        
+        this.load.text('floodData', 'assets/data/floodData.json');
     },
     create: function ()
     {
