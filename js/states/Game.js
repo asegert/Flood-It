@@ -5,6 +5,7 @@ Flood.GameState = {
     {
         //offset: 0:47, 0:75
         this.allData = JSON.parse(this.game.cache.getText('floodData'));
+        this.totalFloodiesRemaining = -1;
         this.currentColour = null;
         this.board = this.createBoard(this.allData.Rounds[0].Board);
         this.createButtons();
@@ -17,7 +18,7 @@ Flood.GameState = {
             for(let j=0, len2=board[i].length; j<len2; j++)
             {
                 let Item = new Flood.Item(this);
-                
+                this.totalFloodiesRemaining++;
                 if(i % 2 === 0)
                 {
                     board[i][j] = Item.init([0 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
@@ -90,7 +91,11 @@ Flood.GameState = {
         {
             //add to main group
             console.log(`add`);
-            checkItem.group = 'flood';
+            if(checkItem.group != 'flood')
+            {
+                checkItem.group = 'flood';
+                this.totalFloodiesRemaining--;
+            }
             return true;
         }
         return false;
@@ -110,6 +115,10 @@ Flood.GameState = {
             }
         }
         console.log(Flood.GameState.board);
+        if(Flood.GameState.totalFloodiesRemaining === 0)
+                {
+                    console.log('gameOver');
+                }
     },
     update: function ()
     {
