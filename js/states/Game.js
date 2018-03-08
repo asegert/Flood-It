@@ -8,6 +8,8 @@ Flood.GameState = {
         this.flood = this.add.group();
         this.floodies = this.add.group();
         this.board = this.createBoard([['black', 'red'], ['orange', 'pink'], ['blue', 'yellow'], ['blue', 'purple']]);
+        this.createButtons();
+        this.board[0][0].group = 'flood';
     },
     createBoard: function(board)
     {
@@ -29,30 +31,56 @@ Flood.GameState = {
         }
         return board;
     },
+    createButtons: function()
+    {
+        let colourArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'white', 'black'];
+        
+        for(let i=0, len=colourArray.length; i<len; i++)
+        {
+            let color = this.add.button(0 + (90 * i), 500, colourArray[i], this.checkFlood, colourArray[i]);
+            color.scale.setTo(0.9, 0.9);
+        }
+    },
     getAdjacent: function(item)
     {
         console.log(`x: ${item.x} y: ${item.y}`);
-        let startX = item.x-1;
-        let startY = item.y-1;
-        for(let i=0; i<3; i++)
+        let sameColour = true;
+        
+        if(item.x % 2 === 0)
         {
-            //X is a valid index
-            if(startX > -1 && startX < this.board.length)
-            {
-                let tempStartY = startY;
-                for(let j=0; j<3; j++)
-                {
-                    console.log(`x: ${startX} y: ${tempStartY}`);
-                    //Y is a valid index
-                    if(tempStartY > -1 && tempStartY < this.board[startX].length)
-                    {
-                        this.checkColour(item, this.board[startX][tempStartY]);
-                    }
-                    tempStartY++;
-                }
-            }
-            startX++;
+            sameColour? sameColour = this.checkValid(item.x-1, item.y-1, item):this.checkValid(item.x-1, item.y-1, item);//[0, 1]
+            sameColour? sameColour = this.checkValid(item.x, item.y-1, item):this.checkValid(item.x, item.y-1, item);//[1, 1]
+            sameColour? sameColour = this.checkValid(item.x-1, item.y, item):this.checkValid(item.x-1, item.y, item);//[0, 2]
+            sameColour? sameColour = this.checkValid(item.x, item.y+1, item):this.checkValid(item.x, item.y+1, item);//[2, 2]
+            sameColour? sameColour = this.checkValid(item.x+1, item.y-1, item):this.checkValid(item.x+1, item.y-1, item);//[0, 3]
+            sameColour? sameColour = this.checkValid(item.x+1, item.y, item):this.checkValid(item.x+1, item.y, item);//[1, 3]
         }
+        else
+        {
+            console.log('k');
+            sameColour? sameColour = this.checkValid(item.x-1, item.y, item):this.checkValid(item.x-1, item.y, item);//[1, 0]
+            sameColour? sameColour = this.checkValid(item.x-1, item.y+1, item):this.checkValid(item.x-1, item.y+1, item);//[2, 0]
+            sameColour? sameColour = this.checkValid(item.x, item.y-1, item):this.checkValid(item.x, item.y-1, item);//[0, 1]
+            sameColour? sameColour = this.checkValid(item.x+1, item.y, item):this.checkValid(item.x+1, item.y, item);//[2, 1]
+            sameColour? sameColour = this.checkValid(item.x, item.y+1, item):this.checkValid(item.x, item.y+1, item);//[1, 2]
+            sameColour? sameColour = this.checkValid(item.x+1, item.y+1, item):this.checkValid(item.x+1, item.y+1, item);//[2, 2]
+        }
+        
+        console.log(sameColour);
+        return sameColour;
+    },
+    checkValid: function(startX, startY, item)
+    {
+        if(startX > -1 && startX < this.board.length)
+        {
+            console.log(`x: ${startX} y: ${startY}`);
+            //Y is a valid index
+            if(startY > -1 && startY < this.board[startX].length)
+            {
+                return this.checkColour(item, this.board[startX][startY]);
+            }
+        }
+        return false;
     },
     checkColour: function(item, checkItem)
     {
@@ -62,24 +90,27 @@ Flood.GameState = {
         if(item.texture === checkItem.texture)
         {
             //add to main group
-            console.log('add');
+            console.log(`add`);
+            checkItem.group = 'flood';
+            return true;
         }
+        return false;
     },
-    switchGroup: function(group, item)
+    checkFlood: function(colourArray)
     {
-        if(item.group != undefined)
+        Flood.GameState.currentColour = colourArray.key;
+        for(let i=0, len1 = Flood.GameState.board.length; i<len1; i++)
         {
-            //remove from group
+            for(let j=0, len2 = Flood.GameState.board[i].length; j<len2; j++)
+            {
+                if(Flood.GameState.board[i][j].group === "flood")
+                {
+                    Flood.GameState.board[i][j].reColour();
+                    console.log(Flood.GameState.getAdjacent(Flood.GameState.board[i][j]));
+                }
+            }
         }
-        item.group = group;
-        if(group === "floodies")
-        {
-            this.floodies.add(item);
-        }
-        else
-        {
-            this.flood.add(item);
-        }
+        console.log(Flood.GameState.board);
     },
     update: function ()
     {

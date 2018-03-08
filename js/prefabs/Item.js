@@ -10,10 +10,11 @@ Flood.Item = function(state) {
      Flood.Item.prototype.init = function(data)
      {
          this.sprite = this.createSprite(data[0], data[1], data[2]);
+         this.sprite.item = this;
          this.texture = data[2];
          this.x = data[3];
          this.y = data[4];
-         this.group = this.state.switchGroup(data[5], this);
+         this.group = 'floodie';
          return this;
      };
      Flood.Item.prototype.createSprite = function(x, y, texture)
@@ -32,4 +33,18 @@ Flood.Item = function(state) {
              this.texture = this.state.currentColour;
          }
      };
+    Flood.Item.prototype.switchGroup = function(group, item)
+    {
+        item.group = group;
+        if(group === "floodies")
+        {
+            Flood.GameState.floodies.add(item.sprite);
+        }
+        else if (group === "flood")
+        {
+            console.log('flooded');
+            Flood.GameState.flood.add(item.sprite);
+            console.log(Flood.GameState.flood);
+        }
+    };
 }
