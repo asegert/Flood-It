@@ -3,7 +3,6 @@ var Flood = Flood || {};
 Flood.GameState = {
     create: function ()
     {
-        console.log('game');
         //offset: 0:47, 0:75
         this.allData = JSON.parse(this.game.cache.getText('floodData'));
         this.add.sprite(0, 0, 'bg');

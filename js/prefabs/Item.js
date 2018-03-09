@@ -19,11 +19,7 @@ Flood.Item = function(state) {
      };
      Flood.Item.prototype.createSprite = function(x, y, texture)
      {
-        return this.state.add.button(x, y, texture, function()
-        {
-            this.reColour(this.state.currentColour);
-            this.state.getAdjacent(this);
-        }, this);
+        return this.state.add.sprite(x, y, texture);
      };
      Flood.Item.prototype.reColour = function(type)
      {
