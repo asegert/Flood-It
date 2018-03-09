@@ -145,6 +145,17 @@ Flood.GameState = {
         if(!Flood.GameState.beeIsMoving)
         {
             Flood.GameState.beeIsMoving = true;
+            if(k>(Flood.GameState.bees.length/2)-1)
+            {
+                Flood.GameState.bees[k].rotation = 0.1 * ((lowX - Flood.GameState.bees[k].x)/100);
+                Flood.GameState.bees[k].scale.setTo(-0.9, 0.9);
+                lowX += 100;
+            }
+            else
+            {
+                Flood.GameState.bees[k].rotation = 0.1 * ((lowX - Flood.GameState.bees[k].x)/100);
+            }
+            console.log(`rotation: ${Flood.GameState.bees[k].rotation}`);
             let move = Flood.GameState.add.tween(Flood.GameState.bees[k]).to({x: lowX, y: lowY}, 500, "Linear", true);
             move.onComplete.add(function()
             {
@@ -158,9 +169,18 @@ Flood.GameState = {
     },
     resetBee: function(index)
     {
-        let resetTween = Flood.GameState.add.tween(Flood.GameState.bees[index]).to({x: 25 + (90 * index), y: 500}, 500, "Linear", true);
+        let x=700;
+        if(Flood.GameState.bees[index].scale.x === -0.9)
+        {
+            x = 0;
+        }
+        let resetTween = Flood.GameState.add.tween(Flood.GameState.bees[index]).to({x: x, y: 0}, 1000, "Linear", true);
         resetTween.onComplete.add(function()
         {
+            Flood.GameState.bees[index].rotation = 0;
+            Flood.GameState.bees[index].scale.setTo(0.9, 0.9);
+            Flood.GameState.bees[index].x = 25 + (90 * index);
+            Flood.GameState.bees[index].y = 500;
             Flood.GameState.beeIsMoving = false;
             if(Flood.GameState.totalFloodiesRemaining === 0)
             {
