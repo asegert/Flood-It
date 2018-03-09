@@ -191,7 +191,7 @@ Flood.GameState = {
                 let runTween = Flood.GameState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
                 runTween.onComplete.add(function()
                 {
-                    if(Flood.currentRound < Flood.GameState.allData.Rounds.length-1)
+                    /*if(Flood.currentRound < Flood.GameState.allData.Rounds.length-1)
                     {
                         Flood.currentRound++;
                         Flood.GameState.game.state.start('Game');
@@ -199,6 +199,15 @@ Flood.GameState = {
                     else
                     {
                         Flood.GameState.game.state.start('End');
+                    }*/
+                    let tempArray = new Array();//Fill Array with board and randomly remove
+                    
+                    for(let i=0, len1 = this.board.length; i<len1; i++)
+                    {
+                        for(let j=0, len2 = this.board[i].length; j<len2; j++)
+                        {
+                            
+                        }
                     }
                 }, this);
             }
