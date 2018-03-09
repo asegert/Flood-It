@@ -3,16 +3,17 @@ var Flood = Flood || {};
 Flood.GameState = {
     create: function ()
     {
+        console.log('game');
         //offset: 0:47, 0:75
         this.allData = JSON.parse(this.game.cache.getText('floodData'));
         this.add.sprite(0, 0, 'bg');
         this.totalFloodiesRemaining = -1;
         this.currentColour = null;
         this.beeIsMoving = false;
-        this.board = this.createBoard(this.allData.Rounds[0].Board);
+        this.board = this.createBoard(this.allData.Rounds[Flood.currentRound].Board);
         this.bees = new Array();
         this.createButtons();
-        this.board[this.allData.Rounds[0].startX][this.allData.Rounds[0].startY].group = 'flood';
+        this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].group = 'flood';
     },
     createBoard: function(board)
     {
@@ -168,7 +169,19 @@ Flood.GameState = {
                 let beekeeper = Flood.GameState.add.sprite(-500, 0, 'beekeeper');
                 beekeeper.animations.add('run');
                 beekeeper.animations.play('run', 15, true);
-                Flood.GameState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
+                let runTween = Flood.GameState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
+                runTween.onComplete.add(function()
+                {
+                    if(Flood.currentRound < Flood.GameState.allData.Rounds.length-1)
+                    {
+                        Flood.currentRound++;
+                        Flood.GameState.game.state.start('Game');
+                    }
+                    else
+                    {
+                        Flood.GameState.game.state.start('End');
+                    }
+                }, this);
             }
         }, this);
     },

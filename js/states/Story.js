@@ -6,6 +6,7 @@ Flood.StoryState = {
         this.add.sprite(0, 0, 'main');
         let start = this.add.button(550, 500, 'start', function()
         {
+            Flood.currentRound = 0;
             this.game.state.start('Game');
         }, this);
         start.scale.setTo(0.9, 0.9);
