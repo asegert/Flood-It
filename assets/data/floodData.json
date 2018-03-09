@@ -8,7 +8,9 @@
                     ["blue", "purple", "green", "orange", "yellow", "blue", "black", "brown", "purple"],
                     ["pink", "black", "white", "purple", "pink", "red", "pink", "blue", "orange", "green"],
                     ["green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown"]
-            ]
+            ],
+            "startX": 5,
+            "startY": 4
         }
     ]
 }

@@ -25,12 +25,18 @@ Flood.Item = function(state) {
             this.state.getAdjacent(this);
         }, this);
      };
-     Flood.Item.prototype.reColour = function()
+     Flood.Item.prototype.reColour = function(type)
      {
          if(this.sprite!=undefined)
          {
-             this.sprite.loadTexture(this.state.currentColour);
-             this.texture = this.state.currentColour;
+             if(type === 'texture')
+             {
+                 this.texture = this.state.currentColour;
+             }
+             else
+             {
+                 this.sprite.loadTexture(this.state.currentColour);
+             }
          }
      };
     Flood.Item.prototype.switchGroup = function(group, item)
