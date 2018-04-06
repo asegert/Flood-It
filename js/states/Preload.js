@@ -17,6 +17,18 @@ Flood.PreloadState = {
         this.load.image('green', 'assets/images/Flood_green.png');
         this.load.image('blue', 'assets/images/Flood_blue.png');
         this.load.image('purple', 'assets/images/Flood_purple.png');
+        
+        this.load.image('blackFloodie', 'assets/images/Flood_black_floodie.png');
+        this.load.image('whiteFloodie', 'assets/images/Flood_white_floodie.png');
+        this.load.image('brownFloodie', 'assets/images/Flood_brown_floodie.png');
+        this.load.image('pinkFloodie', 'assets/images/Flood_pink_floodie.png');
+        this.load.image('redFloodie', 'assets/images/Flood_red_floodie.png');
+        this.load.image('orangeFloodie', 'assets/images/Flood_orange_floodie.png');
+        this.load.image('yellowFloodie', 'assets/images/Flood_yellow_floodie.png');
+        this.load.image('greenFloodie', 'assets/images/Flood_green_floodie.png');
+        this.load.image('blueFloodie', 'assets/images/Flood_blue_floodie.png');
+        this.load.image('purpleFloodie', 'assets/images/Flood_purple_floodie.png');
+        
         //Bees
         this.load.image('blackBee', 'assets/images/Flood_blackBee.png');
         this.load.image('whiteBee', 'assets/images/Flood_whiteBee.png');

@@ -13,6 +13,7 @@ Flood.GameState = {
         this.bees = new Array();
         this.createButtons();
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].group = 'flood';
+        this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].sprite.loadTexture(`${this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].texture}Floodie`);
     },
     createBoard: function(board)
     {
@@ -99,6 +100,8 @@ Flood.GameState = {
             if(checkItem.group != 'flood')
             {
                 checkItem.group = 'flood';
+                checkItem.sprite.loadTexture(`${checkItem.texture}Floodie`);
+                this.getAdjacent(checkItem);
                 this.totalFloodiesRemaining--;
             }
             return true;

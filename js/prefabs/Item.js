@@ -31,7 +31,7 @@ Flood.Item = function(state) {
              }
              else
              {
-                 this.sprite.loadTexture(this.state.currentColour);
+                 this.sprite.loadTexture(`${this.state.currentColour}Floodie`);
              }
          }
      };
