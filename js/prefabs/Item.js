@@ -10,6 +10,7 @@ Flood.Item = function(state) {
      Flood.Item.prototype.init = function(data)
      {
          this.sprite = this.createSprite(data[0], data[1], data[2]);
+         this.endSprite = this.createSprite(data[0], data[1], null);
          this.sprite.item = this;
          this.texture = data[2];
          this.x = data[3];
@@ -35,6 +36,10 @@ Flood.Item = function(state) {
              }
          }
      };
+    Flood.Item.prototype.endCombs = function(tex)
+    {
+        this.endSprite.loadTexture(tex);
+    };
     Flood.Item.prototype.switchGroup = function(group, item)
     {
         item.group = group;

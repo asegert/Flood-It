@@ -5,7 +5,7 @@ Flood.GameState = {
     {
         //offset: 0:47, 0:75
         this.allData = JSON.parse(this.game.cache.getText('floodData'));
-        this.add.sprite(0, 0, 'bg');
+        this.background = this.add.sprite(0, 0, 'bg');
         this.totalFloodiesRemaining = -1;
         this.currentColour = null;
         this.beeIsMoving = false;
@@ -14,6 +14,7 @@ Flood.GameState = {
         this.createButtons();
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].group = 'flood';
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].sprite.loadTexture(`${this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].texture}Floodie`);
+        this.adjacentRecolour = [];
     },
     createBoard: function(board)
     {
@@ -100,7 +101,8 @@ Flood.GameState = {
             if(checkItem.group != 'flood')
             {
                 checkItem.group = 'flood';
-                checkItem.sprite.loadTexture(`${checkItem.texture}Floodie`);
+                this.adjacentRecolour[this.adjacentRecolour.length] = checkItem;
+                //checkItem.sprite.loadTexture(`${checkItem.texture}Floodie`);
                 this.getAdjacent(checkItem);
                 this.totalFloodiesRemaining--;
             }
@@ -162,6 +164,8 @@ Flood.GameState = {
             let move = Flood.GameState.add.tween(Flood.GameState.bees[k]).to({x: lowX, y: lowY}, 500, "Linear", true);
             move.onComplete.add(function()
             {
+                colourArray = colourArray.concat(Flood.GameState.adjacentRecolour);
+                console.log(Flood.GameState.adjacentRecolour);
                 for(let o=0, len=colourArray.length; o<len; o++)
                 {
                     colourArray[o].reColour('colour');
@@ -191,6 +195,60 @@ Flood.GameState = {
                 let beekeeper = Flood.GameState.add.sprite(-500, 0, 'beekeeper');
                 beekeeper.animations.add('run');
                 beekeeper.animations.play('run', 15, true);
+                
+                let combTexture = null;
+                if(Flood.GameState.bees[index].colour === 'red')
+                {
+                    combTexture = 'bugFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'orange')
+                {
+                    this.background.loadTexture("bgFire");
+                    combTexture = 'fireFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'yellow')
+                {
+                    //this.background.loadTexture("bgIce");
+                    combTexture = 'honeyFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'green')
+                {
+                    combTexture = 'luckyFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'blue')
+                {
+                    this.background.loadTexture("bgIce");
+                    combTexture = 'rainFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'purple')
+                {
+                    combTexture = 'thunderFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'pink')
+                {
+                    combTexture = 'roseFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'brown')
+                {
+                    combTexture = 'bearFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'white')
+                {
+                    this.background.loadTexture("bgIce");
+                    combTexture = 'iceFloodie';
+                }
+                else if(Flood.GameState.bees[index].colour === 'black')
+                {
+                    combTexture = 'nightFloodie';
+                }
+                
+                for(let col1 = 0, col1Len = Flood.GameState.board.length; col1<col1Len; col1++)
+                {
+                    for(let col2 = 0, col2Len = Flood.GameState.board[col1].length; col2<col2Len; col2++)
+                    {
+                        this.board[col1][col2].endCombs(combTexture);
+                    }
+                }
                 let runTween = Flood.GameState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
                 runTween.onComplete.add(function()
                 {
