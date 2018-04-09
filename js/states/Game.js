@@ -199,47 +199,51 @@ Flood.GameState = {
                 let combTexture = null;
                 if(Flood.GameState.bees[index].colour === 'red')
                 {
-                    combTexture = 'bugFloodie';
+                    this.background.loadTexture("bgBug");
+                    combTexture = 'bugFloodie';//Buggy Honey
                 }
                 else if(Flood.GameState.bees[index].colour === 'orange')
                 {
                     this.background.loadTexture("bgFire");
-                    combTexture = 'fireFloodie';
+                    combTexture = 'fireFloodie';//Fiery Honey
                 }
                 else if(Flood.GameState.bees[index].colour === 'yellow')
                 {
-                    //this.background.loadTexture("bgIce");
-                    combTexture = 'honeyFloodie';
+                    combTexture = 'honeyFloodie';//Natural Honey
                 }
                 else if(Flood.GameState.bees[index].colour === 'green')
                 {
-                    combTexture = 'luckyFloodie';
+                    this.background.loadTexture("bgLucky");
+                    combTexture = 'luckyFloodie';//Lucky Honey
                 }
                 else if(Flood.GameState.bees[index].colour === 'blue')
                 {
-                    this.background.loadTexture("bgIce");
-                    combTexture = 'rainFloodie';
+                    this.background.loadTexture("bgRain");
+                    combTexture = 'rainFloodie';//Cool Honey
                 }
                 else if(Flood.GameState.bees[index].colour === 'purple')
                 {
-                    combTexture = 'thunderFloodie';
+                    this.background.loadTexture("bgThunder");
+                    combTexture = 'thunderFloodie';//Stormy Honey
                 }
                 else if(Flood.GameState.bees[index].colour === 'pink')
                 {
-                    combTexture = 'roseFloodie';
+                    this.background.loadTexture("bgRose");
+                    combTexture = 'roseFloodie';//Rose Honey
                 }
                 else if(Flood.GameState.bees[index].colour === 'brown')
                 {
-                    combTexture = 'bearFloodie';
+                    combTexture = 'bearFloodie';//Hunny Bear Hunny
                 }
                 else if(Flood.GameState.bees[index].colour === 'white')
                 {
-                    this.background.loadTexture("bgIce");
-                    combTexture = 'iceFloodie';
+                    this.background.loadTexture("bgRain");
+                    combTexture = 'iceFloodie';//Whiteout Honey
                 }
                 else if(Flood.GameState.bees[index].colour === 'black')
                 {
-                    combTexture = 'nightFloodie';
+                    this.background.loadTexture("bgNight");
+                    combTexture = 'nightFloodie';//Midnight Honey
                 }
                 
                 for(let col1 = 0, col1Len = Flood.GameState.board.length; col1<col1Len; col1++)

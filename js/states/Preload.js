@@ -40,6 +40,14 @@ Flood.PreloadState = {
         this.load.image('bugFloodie', 'assets/images/Flood_bug_floodie.png');
         this.load.image('nightFloodie', 'assets/images/Flood_night_floodie.png');
         
+        this.load.image('bgFire', 'assets/images/Flood_fireBG.png');
+        this.load.image('bgBug', 'assets/images/Flood_bugGameBG.png');
+        this.load.image('bgLucky', 'assets/images/Flood_luckyGameBG.png');
+        this.load.image('bgNight', 'assets/images/Flood_nightGameBG.png');
+        this.load.image('bgRain', 'assets/images/Flood_rainGameBG.png');
+        this.load.image('bgRose', 'assets/images/Flood_roseGameBG.png');
+        this.load.image('bgThunder', 'assets/images/Flood_thunderGameBG.png');
+        
         //Bees
         this.load.image('blackBee', 'assets/images/Flood_blackBee.png');
         this.load.image('whiteBee', 'assets/images/Flood_whiteBee.png');
@@ -54,8 +62,6 @@ Flood.PreloadState = {
         
         this.load.image('main', 'assets/images/Flood_main.png');
         this.load.image('bg', 'assets/images/Flood_gameBG.png');
-        this.load.image('bgIce', 'assets/images/Flood_iceGameBG.png');
-        this.load.image('bgFire', 'assets/images/Flood_fireBG.png');
         this.load.image('start', 'assets/images/Flood_start.png');
         
         this.load.spritesheet('beekeeper', 'assets/images/Flood_BeekeeperSprite.png', 548, 610, 5);
