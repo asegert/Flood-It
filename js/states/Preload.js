@@ -7,58 +7,117 @@ Flood.PreloadState = {
         var preloadProgress = this.add.sprite((this.world.width - 540) * 0.5, (this.world.height + 170) * 0.5, 'loading-progress');
         this.load.setPreloadSprite(preloadProgress);
 
-        this.load.image('black', 'assets/images/Flood_black.png');
-        this.load.image('white', 'assets/images/Flood_white.png');
-        this.load.image('brown', 'assets/images/Flood_brown.png');
-        this.load.image('pink', 'assets/images/Flood_pink.png');
-        this.load.image('red', 'assets/images/Flood_red.png');
-        this.load.image('orange', 'assets/images/Flood_orange.png');
-        this.load.image('yellow', 'assets/images/Flood_yellow.png');
-        this.load.image('green', 'assets/images/Flood_green.png');
-        this.load.image('blue', 'assets/images/Flood_blue.png');
-        this.load.image('purple', 'assets/images/Flood_purple.png');
+        //Colour Assets
         
-        this.load.image('blackFloodie', 'assets/images/Flood_black_floodie.png');
-        this.load.image('whiteFloodie', 'assets/images/Flood_white_floodie.png');
-        this.load.image('brownFloodie', 'assets/images/Flood_brown_floodie.png');
-        this.load.image('pinkFloodie', 'assets/images/Flood_pink_floodie.png');
-        this.load.image('redFloodie', 'assets/images/Flood_red_floodie.png');
-        this.load.image('orangeFloodie', 'assets/images/Flood_orange_floodie.png');
-        this.load.image('yellowFloodie', 'assets/images/Flood_yellow_floodie.png');
-        this.load.image('greenFloodie', 'assets/images/Flood_green_floodie.png');
-        this.load.image('blueFloodie', 'assets/images/Flood_blue_floodie.png');
-        this.load.image('purpleFloodie', 'assets/images/Flood_purple_floodie.png');
+        //Bee
+        this.load.image('redBee', 'assets/images/Red/Flood_redBee.png');
+        //Initial Flood Comb
+        this.load.image('red', 'assets/images/Red/Flood_red.png');
+        //Flooded Comb
+        this.load.image('redFloodie', 'assets/images/Red/Flood_red_floodie.png');
+        //Honey Floodie
+        this.load.image('bugFloodie', 'assets/images/Red/Flood_bug_floodie.png');
+        //End BG
+        this.load.image('bgBug', 'assets/images/Red/Flood_bugGameBG.png');
         
-        this.load.image('iceFloodie', 'assets/images/Flood_ice_floodie.png');
-        this.load.image('honeyFloodie', 'assets/images/Flood_honey_floodie.png');
-        this.load.image('rainFloodie', 'assets/images/Flood_rain_floodie.png');
-        this.load.image('fireFloodie', 'assets/images/Flood_fire_floodie.png');
-        this.load.image('bearFloodie', 'assets/images/Flood_bear_floodie.png');
-        this.load.image('thunderFloodie', 'assets/images/Flood_thunder_floodie.png');
-        this.load.image('roseFloodie', 'assets/images/Flood_rose_floodie.png');
-        this.load.image('luckyFloodie', 'assets/images/Flood_lucky_floodie.png');
-        this.load.image('bugFloodie', 'assets/images/Flood_bug_floodie.png');
-        this.load.image('nightFloodie', 'assets/images/Flood_night_floodie.png');
         
-        this.load.image('bgFire', 'assets/images/Flood_fireBG.png');
-        this.load.image('bgBug', 'assets/images/Flood_bugGameBG.png');
-        this.load.image('bgLucky', 'assets/images/Flood_luckyGameBG.png');
-        this.load.image('bgNight', 'assets/images/Flood_nightGameBG.png');
-        this.load.image('bgRain', 'assets/images/Flood_rainGameBG.png');
-        this.load.image('bgRose', 'assets/images/Flood_roseGameBG.png');
-        this.load.image('bgThunder', 'assets/images/Flood_thunderGameBG.png');
+        //Bee
+        this.load.image('orangeBee', 'assets/images/Orange/Flood_orangeBee.png');
+        //Initial Flood Comb
+        this.load.image('orange', 'assets/images/Orange/Flood_orange.png');
+        //Flooded Comb
+        this.load.image('orangeFloodie', 'assets/images/Orange/Flood_orange_floodie.png');
+        //Honey Floodie
+        this.load.image('fireFloodie', 'assets/images/Orange/Flood_fire_floodie.png');
+        //End BG
+        this.load.image('bgFire', 'assets/images/Orange/Flood_fireBG.png');
         
-        //Bees
-        this.load.image('blackBee', 'assets/images/Flood_blackBee.png');
-        this.load.image('whiteBee', 'assets/images/Flood_whiteBee.png');
-        this.load.image('brownBee', 'assets/images/Flood_brownBee.png');
-        this.load.image('pinkBee', 'assets/images/Flood_pinkBee.png');
-        this.load.image('redBee', 'assets/images/Flood_redBee.png');
-        this.load.image('orangeBee', 'assets/images/Flood_orangeBee.png');
-        this.load.image('yellowBee', 'assets/images/Flood_yellowBee.png');
-        this.load.image('greenBee', 'assets/images/Flood_greenBee.png');
-        this.load.image('blueBee', 'assets/images/Flood_blueBee.png');
-        this.load.image('purpleBee', 'assets/images/Flood_purpleBee.png');
+        //Bee
+        this.load.image('yellowBee', 'assets/images/Yellow/Flood_yellowBee.png');
+        //Initial Flood Comb
+        this.load.image('yellow', 'assets/images/Yellow/Flood_yellow.png');
+        //Flooded Comb
+        this.load.image('yellowFloodie', 'assets/images/Yellow/Flood_yellow_floodie.png');
+        //Honey Floodie
+        this.load.image('honeyFloodie', 'assets/images/Yellow/Flood_honey_floodie.png');
+        //End BG same as main
+        
+        //Bee
+        this.load.image('greenBee', 'assets/images/Green/Flood_greenBee.png');
+        //Initial Flood Comb
+        this.load.image('green', 'assets/images/Green/Flood_green.png');
+        //Flooded Comb
+        this.load.image('greenFloodie', 'assets/images/Green/Flood_green_floodie.png');
+        //Honey Floodie
+        this.load.image('luckyFloodie', 'assets/images/Green/Flood_lucky_floodie.png');
+        //End BG
+        this.load.image('bgLucky', 'assets/images/Green/Flood_luckyGameBG.png');
+        
+        //Bee
+        this.load.image('blueBee', 'assets/images/Blue/Flood_blueBee.png');
+        //Initial Flood Comb
+        this.load.image('blue', 'assets/images/Blue/Flood_blue.png');
+        //Flooded Comb
+        this.load.image('blueFloodie', 'assets/images/Blue/Flood_blue_floodie.png');
+        //Honey Floodie
+        this.load.image('rainFloodie', 'assets/images/Blue/Flood_rain_floodie.png');
+        //End BG
+        this.load.image('bgRain', 'assets/images/Blue/Flood_rainGameBG.png');
+        
+        //Bee
+        this.load.image('purpleBee', 'assets/images/Purple/Flood_purpleBee.png');
+        //Initial Flood Comb
+        this.load.image('purple', 'assets/images/Purple/Flood_purple.png');
+        //Flooded Comb
+        this.load.image('purpleFloodie', 'assets/images/Purple/Flood_purple_floodie.png');
+        //Honey Floodie
+        this.load.image('thunderFloodie', 'assets/images/Purple/Flood_thunder_floodie.png');
+        //End BG
+        this.load.image('bgThunder', 'assets/images/Purple/Flood_thunderGameBG.png');
+        
+        //Bee
+        this.load.image('pinkBee', 'assets/images/Pink/Flood_pinkBee.png');
+        //Initial Flood Comb
+        this.load.image('pink', 'assets/images/Pink/Flood_pink.png');
+        //Flooded Comb
+        this.load.image('pinkFloodie', 'assets/images/Pink/Flood_pink_floodie.png');
+        //Honey Floodie
+        this.load.image('roseFloodie', 'assets/images/Pink/Flood_rose_floodie.png');
+        //End BG
+        this.load.image('bgRose', 'assets/images/Pink/Flood_roseGameBG.png');
+        
+        //Bee
+        this.load.image('brownBee', 'assets/images/Brown/Flood_brownBee.png');
+        //Initial Flood Comb
+        this.load.image('brown', 'assets/images/Brown/Flood_brown.png');
+        //Flooded Comb
+        this.load.image('brownFloodie', 'assets/images/Brown/Flood_brown_floodie.png');
+        //Honey Floodie
+        this.load.image('bearFloodie', 'assets/images/Brown/Flood_bear_floodie.png');
+        //End BG same as main
+        
+        //Bee
+        this.load.image('whiteBee', 'assets/images/White/Flood_whiteBee.png');
+        //Initial Flood Comb
+        this.load.image('white', 'assets/images/White/Flood_white.png');
+        //Flooded Comb
+        this.load.image('whiteFloodie', 'assets/images/White/Flood_white_floodie.png');
+        //Honey Floodie
+        this.load.image('iceFloodie', 'assets/images/White/Flood_ice_floodie.png');
+        //End BG same as blue
+        
+        //Bee
+        this.load.image('blackBee', 'assets/images/Black/Flood_blackBee.png');
+        //Initial Flood Comb
+        this.load.image('black', 'assets/images/Black/Flood_black.png');
+        //Flooded Comb
+        this.load.image('blackFloodie', 'assets/images/Black/Flood_black_floodie.png');
+        //Honey Floodie
+        this.load.image('nightFloodie', 'assets/images/Black/Flood_night_floodie.png');
+        //End BG
+        this.load.image('bgNight', 'assets/images/Black/Flood_nightGameBG.png');
+        
+        
         
         this.load.image('main', 'assets/images/Flood_main.png');
         this.load.image('bg', 'assets/images/Flood_gameBG.png');

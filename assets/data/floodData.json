@@ -10,7 +10,9 @@
                     ["green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown"]
             ],
             "startX": 5,
-            "startY": 4
+            "startY": 4,
+            "colourArray": ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown", "white", "black"],
+            "honeyArray": ["Buggy Honey", "Fiery Honey", "Original Honey", "Lucky Honey", "Cool Honey", "Stormy Honey", "Rose Honey", "Hunny Bear Honey", "Whiteout Honey", "Midnight Hunny"]
         }
     ]
 }
