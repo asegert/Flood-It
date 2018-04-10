@@ -9,6 +9,8 @@
                     ["pink", "black", "white", "purple", "pink", "red", "pink", "blue", "orange", "green"],
                     ["green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown"]
             ],
+            "BoardX": 6,
+            "BoardY": 9,
             "startX": 5,
             "startY": 4,
             "colourArray": ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown", "white", "black"],

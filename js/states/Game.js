@@ -9,7 +9,8 @@ Flood.GameState = {
         this.totalFloodiesRemaining = -1;
         this.currentColour = null;
         this.beeIsMoving = false;
-        this.board = this.createBoard(this.allData.Rounds[Flood.currentRound].Board);
+        let ran = new Flood.Randomizer(this);
+        this.board = this.createBoard(ran.init(this.allData.Rounds[Flood.currentRound].colourArray, 6, 9));
         this.bees = new Array();
         this.createButtons();
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].group = 'flood';

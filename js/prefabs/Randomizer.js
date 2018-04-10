@@ -10,13 +10,14 @@ Flood.Randomizer = function(state) {
      Flood.Randomizer.prototype.init = function(colours, x, y)
      {
          let randFactor = colours.length;
-         let newBoard = [][];
+         let newBoard = new Array(x);
          
-         for(let i = 0; i<x; i++)
+         for(let i=0; i<x; i++)
          {
+             newBoard[i]=new Array(y);
              for(let j=0; j<y; j++)
              {
-                 newBoard[i][j]=colors[Math.floor(Math.rand()*randFactor)];
+                 newBoard[i][j]=colours[Math.floor(Math.random()*randFactor)];
              }
          }
          return newBoard;
