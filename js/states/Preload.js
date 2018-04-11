@@ -19,7 +19,8 @@ Flood.PreloadState = {
         this.load.image('bugFloodie', 'assets/images/Red/Flood_bug_floodie.png');
         //End BG
         this.load.image('bgBug', 'assets/images/Red/Flood_bugGameBG.png');
-        
+        //Honey Jar
+        this.load.image('redHoneyJar', 'assets/images/Red/Flood_redJar.png');
         
         //Bee
         this.load.image('orangeBee', 'assets/images/Orange/Flood_orangeBee.png');
@@ -31,6 +32,8 @@ Flood.PreloadState = {
         this.load.image('fireFloodie', 'assets/images/Orange/Flood_fire_floodie.png');
         //End BG
         this.load.image('bgFire', 'assets/images/Orange/Flood_fireBG.png');
+        //Honey Jar
+        this.load.image('orangeHoneyJar', 'assets/images/Orange/Flood_orangeJar.png');
         
         //Bee
         this.load.image('yellowBee', 'assets/images/Yellow/Flood_yellowBee.png');
@@ -41,6 +44,8 @@ Flood.PreloadState = {
         //Honey Floodie
         this.load.image('honeyFloodie', 'assets/images/Yellow/Flood_honey_floodie.png');
         //End BG same as main
+        //Honey Jar
+        this.load.image('yellowHoneyJar', 'assets/images/Yellow/Flood_yellowJar.png');
         
         //Bee
         this.load.image('greenBee', 'assets/images/Green/Flood_greenBee.png');
@@ -52,6 +57,8 @@ Flood.PreloadState = {
         this.load.image('luckyFloodie', 'assets/images/Green/Flood_lucky_floodie.png');
         //End BG
         this.load.image('bgLucky', 'assets/images/Green/Flood_luckyGameBG.png');
+        //Honey Jar
+        this.load.image('greenHoneyJar', 'assets/images/Green/Flood_greenJar.png');
         
         //Bee
         this.load.image('blueBee', 'assets/images/Blue/Flood_blueBee.png');
@@ -63,6 +70,8 @@ Flood.PreloadState = {
         this.load.image('rainFloodie', 'assets/images/Blue/Flood_rain_floodie.png');
         //End BG
         this.load.image('bgRain', 'assets/images/Blue/Flood_rainGameBG.png');
+        //Honey Jar
+        this.load.image('blueHoneyJar', 'assets/images/Blue/Flood_blueJar.png');
         
         //Bee
         this.load.image('purpleBee', 'assets/images/Purple/Flood_purpleBee.png');
@@ -74,6 +83,8 @@ Flood.PreloadState = {
         this.load.image('thunderFloodie', 'assets/images/Purple/Flood_thunder_floodie.png');
         //End BG
         this.load.image('bgThunder', 'assets/images/Purple/Flood_thunderGameBG.png');
+        //Honey Jar
+        this.load.image('purpleHoneyJar', 'assets/images/Purple/Flood_purpleJar.png');
         
         //Bee
         this.load.image('pinkBee', 'assets/images/Pink/Flood_pinkBee.png');
@@ -85,6 +96,8 @@ Flood.PreloadState = {
         this.load.image('roseFloodie', 'assets/images/Pink/Flood_rose_floodie.png');
         //End BG
         this.load.image('bgRose', 'assets/images/Pink/Flood_roseGameBG.png');
+        //Honey Jar
+        this.load.image('pinkHoneyJar', 'assets/images/Pink/Flood_pinkJar.png');
         
         //Bee
         this.load.image('brownBee', 'assets/images/Brown/Flood_brownBee.png');
@@ -95,6 +108,8 @@ Flood.PreloadState = {
         //Honey Floodie
         this.load.image('bearFloodie', 'assets/images/Brown/Flood_bear_floodie.png');
         //End BG same as main
+        //Honey Jar
+        this.load.image('brownHoneyJar', 'assets/images/Brown/Flood_brownJar.png');
         
         //Bee
         this.load.image('whiteBee', 'assets/images/White/Flood_whiteBee.png');
@@ -105,6 +120,8 @@ Flood.PreloadState = {
         //Honey Floodie
         this.load.image('iceFloodie', 'assets/images/White/Flood_ice_floodie.png');
         //End BG same as blue
+        //Honey Jar
+        this.load.image('whiteHoneyJar', 'assets/images/White/Flood_whiteJar.png');
         
         //Bee
         this.load.image('blackBee', 'assets/images/Black/Flood_blackBee.png');
@@ -116,6 +133,8 @@ Flood.PreloadState = {
         this.load.image('nightFloodie', 'assets/images/Black/Flood_night_floodie.png');
         //End BG
         this.load.image('bgNight', 'assets/images/Black/Flood_nightGameBG.png');
+        //Honey Jar
+        this.load.image('blackHoneyJar', 'assets/images/Black/Flood_blackJar.png');
         
         
         
@@ -129,7 +148,7 @@ Flood.PreloadState = {
     },
     create: function ()
     {
-        this.state.start('Story');
+        this.state.start('End');
     }
 };
 /*Copyright (C) Wayside Co. - All Rights Reserved

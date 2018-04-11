@@ -263,9 +263,9 @@ Flood.GameState = {
                         Flood.GameState.game.state.start('Game');
                     }
                     else
-                    {
+                    {*/
                         Flood.GameState.game.state.start('End');
-                    }*/
+                    /*}
                     let tempArray = new Array();//Fill Array with board and randomly remove
                     
                     for(let i=0, len1 = this.board.length; i<len1; i++)
@@ -274,7 +274,7 @@ Flood.GameState = {
                         {
                             
                         }
-                    }
+                    }*/
                 }, this);
             }
         }, this);
