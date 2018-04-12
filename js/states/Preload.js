@@ -16,7 +16,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('redFloodie', 'assets/images/Red/Flood_red_floodie.png');
         //Honey Floodie
-        this.load.image('bugFloodie', 'assets/images/Red/Flood_bug_floodie.png');
+        this.load.image('redFilledFloodie', 'assets/images/Red/Flood_bug_floodie.png');
         //End BG
         this.load.image('bgBug', 'assets/images/Red/Flood_bugGameBG.png');
         //Honey Jar
@@ -29,7 +29,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('orangeFloodie', 'assets/images/Orange/Flood_orange_floodie.png');
         //Honey Floodie
-        this.load.image('fireFloodie', 'assets/images/Orange/Flood_fire_floodie.png');
+        this.load.image('orangeFilledFloodie', 'assets/images/Orange/Flood_fire_floodie.png');
         //End BG
         this.load.image('bgFire', 'assets/images/Orange/Flood_fireBG.png');
         //Honey Jar
@@ -42,7 +42,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('yellowFloodie', 'assets/images/Yellow/Flood_yellow_floodie.png');
         //Honey Floodie
-        this.load.image('honeyFloodie', 'assets/images/Yellow/Flood_honey_floodie.png');
+        this.load.image('yellowFilledFloodie', 'assets/images/Yellow/Flood_honey_floodie.png');
         //End BG same as main
         //Honey Jar
         this.load.image('yellowHoneyJar', 'assets/images/Yellow/Flood_yellowJar.png');
@@ -54,7 +54,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('greenFloodie', 'assets/images/Green/Flood_green_floodie.png');
         //Honey Floodie
-        this.load.image('luckyFloodie', 'assets/images/Green/Flood_lucky_floodie.png');
+        this.load.image('greenFilledFloodie', 'assets/images/Green/Flood_lucky_floodie.png');
         //End BG
         this.load.image('bgLucky', 'assets/images/Green/Flood_luckyGameBG.png');
         //Honey Jar
@@ -67,7 +67,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('blueFloodie', 'assets/images/Blue/Flood_blue_floodie.png');
         //Honey Floodie
-        this.load.image('rainFloodie', 'assets/images/Blue/Flood_rain_floodie.png');
+        this.load.image('blueFilledFloodie', 'assets/images/Blue/Flood_rain_floodie.png');
         //End BG
         this.load.image('bgRain', 'assets/images/Blue/Flood_rainGameBG.png');
         //Honey Jar
@@ -80,7 +80,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('purpleFloodie', 'assets/images/Purple/Flood_purple_floodie.png');
         //Honey Floodie
-        this.load.image('thunderFloodie', 'assets/images/Purple/Flood_thunder_floodie.png');
+        this.load.image('purpleFilledFloodie', 'assets/images/Purple/Flood_thunder_floodie.png');
         //End BG
         this.load.image('bgThunder', 'assets/images/Purple/Flood_thunderGameBG.png');
         //Honey Jar
@@ -93,7 +93,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('pinkFloodie', 'assets/images/Pink/Flood_pink_floodie.png');
         //Honey Floodie
-        this.load.image('roseFloodie', 'assets/images/Pink/Flood_rose_floodie.png');
+        this.load.image('pinkFilledFloodie', 'assets/images/Pink/Flood_rose_floodie.png');
         //End BG
         this.load.image('bgRose', 'assets/images/Pink/Flood_roseGameBG.png');
         //Honey Jar
@@ -106,7 +106,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('brownFloodie', 'assets/images/Brown/Flood_brown_floodie.png');
         //Honey Floodie
-        this.load.image('bearFloodie', 'assets/images/Brown/Flood_bear_floodie.png');
+        this.load.image('brownFilledFloodie', 'assets/images/Brown/Flood_bear_floodie.png');
         //End BG same as main
         //Honey Jar
         this.load.image('brownHoneyJar', 'assets/images/Brown/Flood_brownJar.png');
@@ -118,7 +118,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('whiteFloodie', 'assets/images/White/Flood_white_floodie.png');
         //Honey Floodie
-        this.load.image('iceFloodie', 'assets/images/White/Flood_ice_floodie.png');
+        this.load.image('whiteFilledFloodie', 'assets/images/White/Flood_ice_floodie.png');
         //End BG same as blue
         //Honey Jar
         this.load.image('whiteHoneyJar', 'assets/images/White/Flood_whiteJar.png');
@@ -130,7 +130,7 @@ Flood.PreloadState = {
         //Flooded Comb
         this.load.image('blackFloodie', 'assets/images/Black/Flood_black_floodie.png');
         //Honey Floodie
-        this.load.image('nightFloodie', 'assets/images/Black/Flood_night_floodie.png');
+        this.load.image('blackFilledFloodie', 'assets/images/Black/Flood_night_floodie.png');
         //End BG
         this.load.image('bgNight', 'assets/images/Black/Flood_nightGameBG.png');
         //Honey Jar
@@ -141,7 +141,8 @@ Flood.PreloadState = {
         this.load.image('main', 'assets/images/Flood_main.png');
         this.load.image('bg', 'assets/images/Flood_gameBG.png');
         this.load.image('start', 'assets/images/Flood_start.png');
-        this.load.image('end', 'assets/images/Flood_end.png');
+        this.load.image('end', 'assets/images/Flood_bg.png');
+        this.load.image('backerFloodie', 'assets/images/Flood_backer_Floodie.png');
         this.load.image('coupon', 'assets/images/Flood_coupon.jpg');
         this.load.spritesheet('flyBee', 'assets/images/Flood_flyBee.png', 202, 204, 5);
         

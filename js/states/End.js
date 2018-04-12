@@ -13,13 +13,25 @@ Flood.EndState = {
         this.add.sprite(200, 300, 'pinkHoneyJar');
         this.add.sprite(400, 300, 'brownHoneyJar');
         this.add.sprite(600, 300, 'whiteHoneyJar');*/
-        this.jar = this.add.sprite(900, 150, Flood.HoneyPot);//800, 300
+        this.jar = this.add.sprite(900, 150, `${Flood.HoneyPot}HoneyJar`);//800, 300
         this.jar.scale.setTo(0.01, 0.01);
         
         this.coupon = this.add.sprite(100, 180, 'coupon');
-        this.coupon.scale.setTo(0.3, 0.3);
+        this.coupon.scale.setTo(0.34, 0.36);
         this.coupon.anchor.setTo(0.5, 0.5);
         this.jar.addChild(this.coupon);
+        
+        this.bee = this.add.sprite(0, 100, `${Flood.HoneyPot}Bee`);
+        this.bee.scale.setTo(0.5, 0.5);
+        this.jar.addChild(this.bee);
+        
+        this.backerFloodie = this.add.sprite(150, 205, `${Flood.HoneyPot}Floodie`);
+        this.backerFloodie.scale.setTo(0.5, 0.5);
+        this.jar.addChild(this.backerFloodie);
+        
+        this.floodie = this.add.sprite(150, 205, `${Flood.HoneyPot}FilledFloodie`);
+        this.floodie.scale.setTo(0.5, 0.5);
+        this.jar.addChild(this.floodie);
         
         
         this.flyBee1=this.add.sprite(900, 150, 'flyBee');
