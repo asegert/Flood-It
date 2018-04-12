@@ -264,6 +264,7 @@ Flood.GameState = {
                     }
                     else
                     {*/
+                        Flood.HoneyPot = `${this.currentColour}HoneyJar`;
                         Flood.GameState.game.state.start('End');
                     /*}
                     let tempArray = new Array();//Fill Array with board and randomly remove

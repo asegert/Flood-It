@@ -141,6 +141,9 @@ Flood.PreloadState = {
         this.load.image('main', 'assets/images/Flood_main.png');
         this.load.image('bg', 'assets/images/Flood_gameBG.png');
         this.load.image('start', 'assets/images/Flood_start.png');
+        this.load.image('end', 'assets/images/Flood_end.png');
+        this.load.image('coupon', 'assets/images/Flood_coupon.jpg');
+        this.load.spritesheet('flyBee', 'assets/images/Flood_flyBee.png', 202, 204, 5);
         
         this.load.spritesheet('beekeeper', 'assets/images/Flood_BeekeeperSprite.png', 548, 610, 5);
         
@@ -148,7 +151,7 @@ Flood.PreloadState = {
     },
     create: function ()
     {
-        this.state.start('End');
+        this.state.start('Story');
     }
 };
 /*Copyright (C) Wayside Co. - All Rights Reserved
