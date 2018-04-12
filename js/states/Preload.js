@@ -142,7 +142,6 @@ Flood.PreloadState = {
         this.load.image('bg', 'assets/images/Flood_gameBG.png');
         this.load.image('start', 'assets/images/Flood_start.png');
         this.load.image('end', 'assets/images/Flood_bg.png');
-        this.load.image('backerFloodie', 'assets/images/Flood_backer_Floodie.png');
         this.load.image('coupon', 'assets/images/Flood_coupon.jpg');
         this.load.spritesheet('flyBee', 'assets/images/Flood_flyBee.png', 202, 204, 5);
         
