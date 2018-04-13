@@ -140,6 +140,8 @@ Flood.PreloadState = {
         
         this.load.image('main', 'assets/images/Flood_main.png');
         this.load.image('bg', 'assets/images/Flood_gameBG.png');
+        this.load.image('bgStory', 'assets/images/Flood_bg.png');
+        this.load.image('ins', 'assets/images/Flood_ins.png');
         this.load.image('start', 'assets/images/Flood_start.png');
         this.load.image('end', 'assets/images/Flood_bg.png');
         this.load.image('coupon', 'assets/images/Flood_coupon.jpg');
