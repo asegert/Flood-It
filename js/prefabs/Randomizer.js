@@ -58,7 +58,7 @@ Flood.Randomizer = function(state) {
 
          if(innerWidth<widthFactor)
          {
-             widthFactor = Math.round((innerWidth/widthFactor)*10)/10; //(screen width/length of combs at full size) = scale for right size combs
+             widthFactor = Math.floor((innerWidth/widthFactor)*10)/10; //(screen width/length of combs at full size) = scale for right size combs
          }
          else
          {
@@ -67,7 +67,7 @@ Flood.Randomizer = function(state) {
          
          if(innerHeight<heightFactor)
          {
-             heightFactor = Math.round((innerHeight/heightFactor)*10)/10; //(screen width/length of combs at full size) = scale for right size combs
+             heightFactor = Math.floor((innerHeight/heightFactor)*10)/10; //(screen width/length of combs at full size) = scale for right size combs
          }
          else
          {

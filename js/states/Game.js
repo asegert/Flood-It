@@ -19,13 +19,40 @@ Flood.GameState = {
         this.beeIsMoving['brown'] = false;
         this.beeIsMoving['white'] = false;
         this.beeIsMoving['black'] = false;
-        let ran = new Flood.Randomizer(this);
-        this.board = ran.init(this.allData.Rounds[Flood.currentRound].colourArray, 1, 2, this.allData.Rounds[Flood.currentRound].TileWidth, this.allData.Rounds[Flood.currentRound].TileHeight);
+        if(this.allData.Rounds[Flood.currentRound].Random)
+        {
+            let ran = new Flood.Randomizer(this);
+            this.board = ran.init(this.allData.Rounds[Flood.currentRound].colourArray, this.allData.Rounds[Flood.currentRound].BoardX, this.allData.Rounds[Flood.currentRound].BoardY, this.allData.Rounds[Flood.currentRound].TileWidth, this.allData.Rounds[Flood.currentRound].TileHeight);
+        }
+        else
+        {
+            this.board = this.createBoard(this.allData.Rounds[Flood.currentRound].Board);
+        }
         this.bees = new Array();
         this.createButtons();
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].group = 'flood';
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].sprite.loadTexture(`${this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].texture}Floodie`);
         this.adjacentRecolour = [];
+    },
+    createBoard: function(board)
+    {
+        for(let i=0, len1=board.length; i<len1; i++)
+        {
+            for(let j=0, len2=board[i].length; j<len2; j++)
+            {
+                let Item = new Flood.Item(this);
+                this.totalFloodiesRemaining++;
+                if(i % 2 === 0)
+                {
+                    board[i][j] = Item.init([10 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
+                }
+                else
+                {
+                    board[i][j] = Item.init([57 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
+                }
+            }
+        }
+        return board;
     },
     createButtons: function()
     {
