@@ -8,7 +8,17 @@ Flood.GameState = {
         this.background = this.add.sprite(0, 0, 'bg');
         this.totalFloodiesRemaining = -1;
         this.currentColour = null;
-        this.beeIsMoving = false;
+        this.beeIsMoving = [];
+        this.beeIsMoving['red'] = false;
+        this.beeIsMoving['orange'] = false;
+        this.beeIsMoving['yellow'] = false;
+        this.beeIsMoving['green'] = false;
+        this.beeIsMoving['blue'] = false;
+        this.beeIsMoving['purple'] = false;
+        this.beeIsMoving['pink'] = false;
+        this.beeIsMoving['brown'] = false;
+        this.beeIsMoving['white'] = false;
+        this.beeIsMoving['black'] = false;
         let ran = new Flood.Randomizer(this);
         this.board = ran.init(this.allData.Rounds[Flood.currentRound].colourArray, 10, 10, this.allData.Rounds[Flood.currentRound].TileWidth, this.allData.Rounds[Flood.currentRound].TileHeight);
         this.bees = new Array();
@@ -45,7 +55,6 @@ Flood.GameState = {
         }
         else
         {
-            console.log('k');
             sameColour? sameColour = this.checkValid(item.x-1, item.y, item):this.checkValid(item.x-1, item.y, item);//[1, 0]
             sameColour? sameColour = this.checkValid(item.x-1, item.y+1, item):this.checkValid(item.x-1, item.y+1, item);//[2, 0]
             sameColour? sameColour = this.checkValid(item.x, item.y-1, item):this.checkValid(item.x, item.y-1, item);//[0, 1]
@@ -54,7 +63,6 @@ Flood.GameState = {
             sameColour? sameColour = this.checkValid(item.x+1, item.y+1, item):this.checkValid(item.x+1, item.y+1, item);//[2, 2]
         }
         
-        console.log(sameColour);
         return sameColour;
     },
     checkValid: function(startX, startY, item)
@@ -72,9 +80,6 @@ Flood.GameState = {
     },
     checkColour: function(item, checkItem)
     {
-        console.log('colour');
-        console.log(item.texture);
-        console.log(checkItem.texture);
         if(item.texture === checkItem.texture)
         {
             //add to main group
@@ -128,9 +133,9 @@ Flood.GameState = {
                 }
             }
         }
-        if(!Flood.GameState.beeIsMoving)
+        if(!Flood.GameState.beeIsMoving[Flood.GameState.currentColour])
         {
-            Flood.GameState.beeIsMoving = true;
+            Flood.GameState.beeIsMoving[Flood.GameState.currentColour] = true;
             if(k>(Flood.GameState.bees.length/2)-1)
             {
                 Flood.GameState.bees[k].rotation = 0.1 * ((lowX - Flood.GameState.bees[k].x)/100);
@@ -169,8 +174,8 @@ Flood.GameState = {
             Flood.GameState.bees[index].scale.setTo(0.9, 0.9);
             Flood.GameState.bees[index].x = 25 + (90 * index);
             Flood.GameState.bees[index].y = 500;
-            Flood.GameState.beeIsMoving = false;
-            if(Flood.GameState.totalFloodiesRemaining === 0)
+            Flood.GameState.beeIsMoving[Flood.GameState.bees[index].colour] = false;
+            if(Flood.GameState.totalFloodiesRemaining === 0 && Flood.GameState.currentColour === Flood.GameState.bees[index].colour)
             {
                 console.log('gameOver');
                 let beekeeper = Flood.GameState.add.sprite(-500, 0, 'beekeeper');
