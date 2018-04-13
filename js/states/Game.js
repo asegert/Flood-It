@@ -177,54 +177,12 @@ Flood.GameState = {
                 beekeeper.animations.add('run');
                 beekeeper.animations.play('run', 15, true);
                 
-                let combTexture = null;
-                if(Flood.GameState.bees[index].colour === 'red')
+                let combTexture = `${Flood.GameState.bees[index].colour}FilledFloodie`;
+                let bgTexture = Flood.GameState.allData.Rounds[Flood.currentRound].filledBG[index];
+                
+                if(bgTexture != null)
                 {
-                    this.background.loadTexture("bgBug");
-                    combTexture = 'redFilledFloodie';//Buggy Honey
-                }
-                else if(Flood.GameState.bees[index].colour === 'orange')
-                {
-                    this.background.loadTexture("bgFire");
-                    combTexture = 'orangeFilledFloodie';//Fiery Honey
-                }
-                else if(Flood.GameState.bees[index].colour === 'yellow')
-                {
-                    combTexture = 'yellowFilledFloodie';//Natural Honey
-                }
-                else if(Flood.GameState.bees[index].colour === 'green')
-                {
-                    this.background.loadTexture("bgLucky");
-                    combTexture = 'greenFilledFloodie';//Lucky Honey
-                }
-                else if(Flood.GameState.bees[index].colour === 'blue')
-                {
-                    this.background.loadTexture("bgRain");
-                    combTexture = 'blueFilledFloodie';//Cool Honey
-                }
-                else if(Flood.GameState.bees[index].colour === 'purple')
-                {
-                    this.background.loadTexture("bgThunder");
-                    combTexture = 'purpleFilledFloodie';//Stormy Honey
-                }
-                else if(Flood.GameState.bees[index].colour === 'pink')
-                {
-                    this.background.loadTexture("bgRose");
-                    combTexture = 'pinkFilledFloodie';//Rose Honey
-                }
-                else if(Flood.GameState.bees[index].colour === 'brown')
-                {
-                    combTexture = 'brownFilledFloodie';//Hunny Bear Hunny
-                }
-                else if(Flood.GameState.bees[index].colour === 'white')
-                {
-                    this.background.loadTexture("bgRain");
-                    combTexture = 'whiteFilledFloodie';//Whiteout Honey
-                }
-                else if(Flood.GameState.bees[index].colour === 'black')
-                {
-                    this.background.loadTexture("bgNight");
-                    combTexture = 'blackFilledFloodie';//Midnight Honey
+                   this.background.loadTexture(bgTexture); 
                 }
                 
                 for(let col1 = 0, col1Len = Flood.GameState.board.length; col1<col1Len; col1++)
