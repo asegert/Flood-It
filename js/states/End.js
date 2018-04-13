@@ -13,6 +13,8 @@ Flood.EndState = {
         this.add.sprite(200, 300, 'pinkHoneyJar');
         this.add.sprite(400, 300, 'brownHoneyJar');
         this.add.sprite(600, 300, 'whiteHoneyJar');*/
+        this.honeyText = this.add.text(this.world.centerX, 40, `You Made ${Flood.HoneyType}`, {font: "40px Nosifer", fill: "#FF9900", stroke: "#FFFF00", strokeThickness: 5});
+        this.honeyText.anchor.setTo(0.5, 0.5);
         this.jar = this.add.sprite(900, 150, `${Flood.HoneyPot}HoneyJar`);//800, 300
         this.jar.scale.setTo(0.01, 0.01);
         

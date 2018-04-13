@@ -20,7 +20,7 @@ Flood.GameState = {
         this.beeIsMoving['white'] = false;
         this.beeIsMoving['black'] = false;
         let ran = new Flood.Randomizer(this);
-        this.board = ran.init(this.allData.Rounds[Flood.currentRound].colourArray, 10, 10, this.allData.Rounds[Flood.currentRound].TileWidth, this.allData.Rounds[Flood.currentRound].TileHeight);
+        this.board = ran.init(this.allData.Rounds[Flood.currentRound].colourArray, 1, 2, this.allData.Rounds[Flood.currentRound].TileWidth, this.allData.Rounds[Flood.currentRound].TileHeight);
         this.bees = new Array();
         this.createButtons();
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].group = 'flood';
@@ -207,7 +207,8 @@ Flood.GameState = {
                     }
                     else
                     {*/
-                        Flood.HoneyPot = `${this.currentColour}`;
+                        Flood.HoneyType = Flood.GameState.allData.Rounds[Flood.currentRound].honeyArray[index];
+                        Flood.HoneyPot = this.currentColour;
                         Flood.GameState.game.state.start('End');
                     /*}
                     let tempArray = new Array();//Fill Array with board and randomly remove
