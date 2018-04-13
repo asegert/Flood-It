@@ -20,7 +20,9 @@ Flood.Item = function(state) {
      };
      Flood.Item.prototype.createSprite = function(x, y, texture)
      {
-        return this.state.add.sprite(x, y, texture);
+        let sprite = this.state.add.sprite(x, y, texture);
+        sprite.rotation= -0.045;
+        return sprite;
      };
      Flood.Item.prototype.reColour = function(type)
      {
@@ -39,6 +41,7 @@ Flood.Item = function(state) {
     Flood.Item.prototype.endCombs = function(tex)
     {
         this.endSprite.loadTexture(tex);
+        this.endSprite.scale.setTo(this.sprite.scale.x, this.sprite.scale.y);
     };
     Flood.Item.prototype.switchGroup = function(group, item)
     {
@@ -53,5 +56,9 @@ Flood.Item = function(state) {
             Flood.GameState.flood.add(item.sprite);
             console.log(Flood.GameState.flood);
         }
+    };
+    Flood.Item.prototype.scaleItem = function(scale)
+    {
+        this.sprite.scale.setTo(scale, scale);
     };
 }
