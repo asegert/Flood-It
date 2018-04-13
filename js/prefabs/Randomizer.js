@@ -23,6 +23,10 @@ Flood.Randomizer = function(state) {
                 {
                     let Item = new Flood.Item(this.state);
                     Flood.GameState.totalFloodiesRemaining++;
+                    if(colours[i][j] === undefined)
+                    {
+                       Flood.GameState.totalFloodiesRemaining--; 
+                    }
                     if(i % 2 === 0)
                     {
                         newBoard[i][j] = Item.init([xOffset + ((94*scaleFactor) * j), (10*scaleFactor) +   ((73*scaleFactor) * i), colours[i][j], i, j, "floodies"]);

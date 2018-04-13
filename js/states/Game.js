@@ -210,7 +210,10 @@ Flood.GameState = {
                 {
                     for(let col2 = 0, col2Len = Flood.GameState.board[col1].length; col2<col2Len; col2++)
                     {
-                        this.board[col1][col2].endCombs(combTexture);
+                        if(this.board[col1][col2] != undefined)
+                        {
+                            this.board[col1][col2].endCombs(combTexture);
+                        }
                     }
                 }
                 let runTween = Flood.GameState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
