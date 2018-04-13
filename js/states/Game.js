@@ -19,40 +19,26 @@ Flood.GameState = {
         this.beeIsMoving['brown'] = false;
         this.beeIsMoving['white'] = false;
         this.beeIsMoving['black'] = false;
+        this.bees = new Array();
+        let board = null, boardX = 0, boardY = 0;
         if(this.allData.Rounds[Flood.currentRound].Random)
         {
-            let ran = new Flood.Randomizer(this);
-            this.board = ran.init(this.allData.Rounds[Flood.currentRound].colourArray, this.allData.Rounds[Flood.currentRound].BoardX, this.allData.Rounds[Flood.currentRound].BoardY, this.allData.Rounds[Flood.currentRound].TileWidth, this.allData.Rounds[Flood.currentRound].TileHeight);
+            board = this.allData.Rounds[Flood.currentRound].colourArray;
+            boardX = this.allData.Rounds[Flood.currentRound].BoardX;
+            boardY = this.allData.Rounds[Flood.currentRound].BoardY;
         }
         else
         {
-            this.board = this.createBoard(this.allData.Rounds[Flood.currentRound].Board);
+            board = this.allData.Rounds[Flood.currentRound].Board;
+            boardX = board.length;
+            boardY = board[0].length;
         }
-        this.bees = new Array();
+        let ran = new Flood.Randomizer(this);
+        this.board = ran.init(board, boardX, boardY, this.allData.Rounds[Flood.currentRound].TileWidth, this.allData.Rounds[Flood.currentRound].TileHeight, this.allData.Rounds[Flood.currentRound].Random);
         this.createButtons();
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].group = 'flood';
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].sprite.loadTexture(`${this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].texture}Floodie`);
         this.adjacentRecolour = [];
-    },
-    createBoard: function(board)
-    {
-        for(let i=0, len1=board.length; i<len1; i++)
-        {
-            for(let j=0, len2=board[i].length; j<len2; j++)
-            {
-                let Item = new Flood.Item(this);
-                this.totalFloodiesRemaining++;
-                if(i % 2 === 0)
-                {
-                    board[i][j] = Item.init([10 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
-                }
-                else
-                {
-                    board[i][j] = Item.init([57 + (93.2 * j), 0 + (74.5 * i), board[i][j], i, j, "floodies"]);
-                }
-            }
-        }
-        return board;
     },
     createButtons: function()
     {
@@ -107,7 +93,7 @@ Flood.GameState = {
     },
     checkColour: function(item, checkItem)
     {
-        if(item.texture === checkItem.texture)
+        if(checkItem != undefined && item.texture === checkItem.texture)
         {
             //add to main group
             console.log(`add`);
@@ -143,7 +129,10 @@ Flood.GameState = {
         {
             for(let j=0, len2 = Flood.GameState.board[i].length; j<len2; j++)
             {
-                if(Flood.GameState.board[i][j].group === "flood")
+                console.log(i);
+                console.log(j);
+                console.log(Flood.GameState.board[i][j]);
+                if(Flood.GameState.board[i][j] != undefined && Flood.GameState.board[i][j].group === "flood")
                 {
                     if(Flood.GameState.board[i][j].sprite.y > lowY)
                     {

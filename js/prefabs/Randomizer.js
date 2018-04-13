@@ -7,34 +7,59 @@ Flood.Randomizer = function(state) {
      this.state = state;
      this.game = state.game; 
      
-     Flood.Randomizer.prototype.init = function(colours, y, x, width, height)
+     Flood.Randomizer.prototype.init = function(colours, y, x, width, height, random)
      {
          let scaleFactor = this.getScaleFactor(x, y, width, height);
          let xOffset = this.getXOffset(x, width, scaleFactor);//width
          
-         let randFactor = colours.length;
          let newBoard = new Array(y);
          
-         for(let i=0; i<y; i++)
+         if(!random)
          {
-             newBoard[i]=new Array(x);
-             for(let j=0; j<x; j++)
-             {
-                 //newBoard[i][j]=colours[Math.floor(Math.random()*randFactor)];
+            for(let i=0, len1=colours.length; i<len1; i++)
+            {
+                newBoard[i]=new Array(x);
+                for(let j=0, len2=colours[i].length; j<len2; j++)
+                {
+                    let Item = new Flood.Item(this.state);
+                    Flood.GameState.totalFloodiesRemaining++;
+                    if(i % 2 === 0)
+                    {
+                        newBoard[i][j] = Item.init([xOffset + ((94*scaleFactor) * j), (10*scaleFactor) +   ((73*scaleFactor) * i), colours[i][j], i, j, "floodies"]);
+                        newBoard[i][j].scaleItem(scaleFactor);
+                    }
+                    else
+                    {
+                        newBoard[i][j] = Item.init([((Math.floor(height/2)*scaleFactor) + xOffset) +   ((94*scaleFactor) * j), (10*scaleFactor) + ((73*scaleFactor) * i), colours[i][j], i, j, "floodies"]);
+                        newBoard[i][j].scaleItem(scaleFactor);
+                    }
+                }
+            }
+         }
+         else
+         {
+            let randFactor = colours.length;
+            for(let i=0; i<y; i++)
+            {
+                newBoard[i]=new Array(x);
+                for(let j=0; j<x; j++)
+                {
+                    //newBoard[i][j]=colours[Math.floor(Math.random()*randFactor)];
                  
-                let Item = new Flood.Item(this.state);
-                Flood.GameState.totalFloodiesRemaining++;
-                if(i % 2 === 0)
-                {
-                    newBoard[i][j] = Item.init([xOffset + ((94*scaleFactor) * j), (10*scaleFactor) + ((73*scaleFactor) * i), colours[Math.floor(Math.random()*randFactor)], i, j, "floodies"]);//97 105
-                    newBoard[i][j].scaleItem(scaleFactor);
+                    let Item = new Flood.Item(this.state);
+                    Flood.GameState.totalFloodiesRemaining++;
+                    if(i % 2 === 0)
+                    {
+                        newBoard[i][j] = Item.init([xOffset + ((94*scaleFactor) * j), (10*scaleFactor) +   ((73*scaleFactor) * i), colours[Math.floor(Math.random()*randFactor)], i, j,   "floodies"]);//97 105
+                        newBoard[i][j].scaleItem(scaleFactor);
+                    }
+                    else
+                    {
+                        newBoard[i][j] = Item.init([((Math.floor(height/2)*scaleFactor) + xOffset) +   ((94*scaleFactor) * j), (10*scaleFactor) + ((73*scaleFactor) *     i),colours[Math.floor(Math.random()*randFactor)], i, j, "floodies"]);
+                        newBoard[i][j].scaleItem(scaleFactor);//height/2 * scaleFactor = 48
+                    }
                 }
-                else
-                {
-                    newBoard[i][j] = Item.init([((Math.floor(height/2)*scaleFactor) + xOffset) + ((94*scaleFactor) * j), (10*scaleFactor) + ((73*scaleFactor) * i),colours[Math.floor(Math.random()*randFactor)], i, j, "floodies"]);
-                    newBoard[i][j].scaleItem(scaleFactor);//height/2 * scaleFactor = 48
-                }
-             }
+            }
          }
          return newBoard;
      };

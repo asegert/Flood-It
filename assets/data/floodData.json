@@ -2,12 +2,12 @@
     "Rounds":[
         {
             "Board":[
-                    ["black", "red", "blue", "purple", "brown", "black", "orange", "green", "yellow", "pink"],
-                    ["orange", "pink", "brown", "white", "green", "red", "blue", "white", "purple"],
-                    ["blue", "yellow", "red", "black", "orange", "brown", "white", "pink", "red", "yellow"],
-                    ["blue", "purple", "green", "orange", "yellow", "blue", "black", "brown", "purple"],
-                    ["pink", "black", "white", "purple", "pink", "red", "pink", "blue", "orange", "green"],
-                    ["green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown"]
+                    ["black", "red", "blue", "purple", "brown", "black", "orange", "green", "yellow", "pink", "black", "red", "blue", "purple", "brown", "black", "orange", "green"],
+                    ["orange", "pink", "brown", "white", "green", "red", "blue", "white", "purple", "orange", "pink", "brown", "white", "green", "red", "blue", "white", "purple"],
+                    ["blue", "yellow", "red", "black", "orange", "brown", "white", "pink", "red", "yellow", "blue", "yellow", "red", "black", "orange", "brown", "white", "pink"],
+                    ["blue", "purple", "green", "orange", "yellow", "blue", "black", "brown", "purple", "blue", "purple", "green", "orange", "yellow", "blue", "black", "brown", "purple"],
+                    ["pink", "black", "white", "purple", "pink", "red", "pink", "blue", "orange", "green", "pink", "black", "white", "purple", "pink", "red", "pink", "blue"],
+                    ["green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown", "green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown"]
             ],
             "BoardX": 6,
             "BoardY": 9,
@@ -18,7 +18,7 @@
             "colourArray": ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown", "white", "black"],
             "honeyArray": ["Buggy Honey", "Fiery Honey", "Original Honey", "Lucky Honey", "Cool Honey", "Stormy Honey", "Rose Honey", "Hunny Bear Honey", "Whiteout Honey", "Midnight Hunny"],
             "filledBG": ["bgBug", "bgFire", null, "bgLucky", "bgRain", "bgThunder", "bgRose", null, "bgRain", "bgNight"],
-            "Random": true
+            "Random": false
         }
     ]
 }
