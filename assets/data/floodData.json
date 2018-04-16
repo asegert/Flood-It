@@ -18,27 +18,33 @@
             "colourArray": ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown", "white", "black"],
             "honeyArray": ["Buggy Honey", "Fiery Honey", "Original Honey", "Lucky Honey", "Cool Honey", "Stormy Honey", "Rose Honey", "Hunny Bear Honey", "Whiteout Honey", "Midnight Hunny"],
             "filledBG": ["bgBug", "bgFire", null, "bgLucky", "bgRain", "bgThunder", "bgRose", null, "bgRain", "bgNight"],
-            "Random": false
-        },
+            "Random": true
+        }
+    ],
+    "Tutorial": [
         {
             "Board":[
-                    ["black", "red", "blue", "purple", "brown", "black", "orange", "green", "yellow", "pink", "black", "red", "blue", "purple", "brown", "black", "orange", "green", "yellow", "pink"],
-                    ["orange", "pink", "brown", "white", "green", "red", "blue", "white", "purple", "orange", "pink", "brown", "white", "green", "red", "blue", "white", "purple"],
-                    ["blue", "yellow", "red", "black", "orange", "brown", "white", "pink", "red", "yellow", "blue", "yellow", "red", "black", "orange", "brown", "white", "pink", "red", "yellow"],
-                    ["blue", "purple", "green", "orange", "yellow", "blue", "black", "brown", "purple", "blue", "purple", "green", "orange", "yellow", "blue", "black", "brown", "purple"],
-                    ["pink", "black", "white", "purple", "pink", "red", "pink", "blue", "orange", "green", "pink", "black", "white", "purple", "pink", "red", "pink", "blue", "orange", "green"],
-                    ["green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown", "green", "red", "blue", "yellow", "green", "yellow", "purple", "red", "brown"]
+                    ["yellow", "red", "blue", "blue", "yellow"],
+                    ["green", "green", "white", "green", "green"],
+                    ["yellow", "red", "red", "blue", "yellow"]
             ],
-            "BoardX": 6,
-            "BoardY": 9,
-            "startX": 5,
-            "startY": 4,
+            "BoardX": 3,
+            "BoardY": 5,
+            "startX": 1,
+            "startY": 2,
             "TileWidth": 105,
             "TileHeight": 97,
+            "arrow": ["blue", "red", "green", "yellow"],
+            "arrowLanding": [[2, 3], [2, 1], [1, 1], [2, 0]],
+            "switchers": [
+                            [[0, 2], [0, 3], [2, 3]],
+                            [[0, 1], [2, 1], [2, 2]],
+                            [[1, 0], [1, 1], [1, 3], [1, 4]],
+                            [[0, 0], [0, 4], [2, 0], [2, 4]]
+                         ],
             "colourArray": ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown", "white", "black"],
-            "honeyArray": ["Buggy Honey", "Fiery Honey", "Original Honey", "Lucky Honey", "Cool Honey", "Stormy Honey", "Rose Honey", "Hunny Bear Honey", "Whiteout Honey", "Midnight Hunny"],
             "filledBG": ["bgBug", "bgFire", null, "bgLucky", "bgRain", "bgThunder", "bgRose", null, "bgRain", "bgNight"],
-            "Random": true
+            "Random": false
         }
     ]
 }

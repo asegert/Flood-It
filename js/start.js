@@ -28,6 +28,7 @@ function run()
     Flood.game.state.add('Preload', Flood.PreloadState); 
     Flood.game.state.add('Game', Flood.GameState);
     Flood.game.state.add('Story', Flood.StoryState);
+    Flood.game.state.add('Tutorial', Flood.TutorialState);
     Flood.game.state.add('End', Flood.EndState);
 
     Flood.game.state.start('Cache');

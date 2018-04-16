@@ -17,7 +17,7 @@ Flood.StoryState = {
             else
             {
                 Flood.currentRound = 0;
-                this.game.state.start('Game');
+                this.game.state.start('Tutorial');
             }
         }, this);
         start.scale.setTo(0.9, 0.9);

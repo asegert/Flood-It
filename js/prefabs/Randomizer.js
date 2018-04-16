@@ -22,10 +22,10 @@ Flood.Randomizer = function(state) {
                 for(let j=0, len2=colours[i].length; j<len2; j++)
                 {
                     let Item = new Flood.Item(this.state);
-                    Flood.GameState.totalFloodiesRemaining++;
+                    this.state.totalFloodiesRemaining++;
                     if(colours[i][j] === undefined)
                     {
-                       Flood.GameState.totalFloodiesRemaining--; 
+                       this.state.totalFloodiesRemaining--; 
                     }
                     if(i % 2 === 0)
                     {
@@ -51,7 +51,7 @@ Flood.Randomizer = function(state) {
                     //newBoard[i][j]=colours[Math.floor(Math.random()*randFactor)];
                  
                     let Item = new Flood.Item(this.state);
-                    Flood.GameState.totalFloodiesRemaining++;
+                    this.state.totalFloodiesRemaining++;
                     if(i % 2 === 0)
                     {
                         newBoard[i][j] = Item.init([xOffset + ((94*scaleFactor) * j), (10*scaleFactor) +   ((73*scaleFactor) * i), colours[Math.floor(Math.random()*randFactor)], i, j,   "floodies"]);//97 105
