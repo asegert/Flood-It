@@ -47,7 +47,9 @@ Flood.TutorialState = {
         this.dropTween = this.add.tween(this.arrow).to({y: this.arrow.y+10}, 500, "Linear", true, 0, -1);
         this.dropTween.yoyo(true, 0);
         
-        this.game.time.events.add(Phaser.Timer.SECOND * 5, this.repositionArrow);
+        this.hint = this.add.sprite(200, 300, 'hint');
+        
+        this.game.time.events.add(Phaser.Timer.SECOND * 3, this.repositionArrow);
     },
     createButtons: function()
     {
@@ -77,10 +79,20 @@ Flood.TutorialState = {
             
         Flood.TutorialState.dropTween = Flood.TutorialState.add.tween(Flood.TutorialState.arrow).to({y: Flood.TutorialState.arrow.y+10}, 500, "Linear", true, 0, -1);
         Flood.TutorialState.dropTween.yoyo(true, 0);
+        
+        if(Flood.TutorialState.hint != undefined && Flood.TutorialState.hint.key === 'hint')
+        {
+            Flood.TutorialState.hint.loadTexture('hint2');
+            Flood.TutorialState.world.bringToTop(Flood.TutorialState.arrow);
+        }
     },
     checkFlood: function(colourArr)
     {
         Flood.TutorialState.arrow.alpha=0;
+        if(Flood.TutorialState.hint != undefined)
+        {
+            Flood.TutorialState.hint.destroy();
+        }
         let tempColour = colourArr.key.replace("Bee", "");
         if(tempColour === Flood.TutorialState.allData.Tutorial[0].arrow[Flood.TutorialState.instructionValue])
         {
