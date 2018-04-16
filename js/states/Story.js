@@ -21,6 +21,8 @@ Flood.StoryState = {
             }
         }, this);
         start.scale.setTo(0.9, 0.9);
+        
+        this.game.plugin.invert(this.world);
     }
 };
 /*Copyright (C) Wayside Co. - All Rights Reserved

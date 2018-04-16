@@ -79,11 +79,14 @@ Flood.TutorialState = {
             }
         }
         Flood.TutorialState.dropTween.stop();
-        Flood.TutorialState.arrow.position.x=Flood.TutorialState.bees[k].x+Flood.TutorialState.bees[k].width/2;
-        Flood.TutorialState.arrow.position.y=Flood.TutorialState.bees[k].y-Flood.TutorialState.bees[k].height/2;
+        if(k != Flood.TutorialState.bees.length)
+        {
+            Flood.TutorialState.arrow.position.x=Flood.TutorialState.bees[k].x+Flood.TutorialState.bees[k].width/2;
+            Flood.TutorialState.arrow.position.y=Flood.TutorialState.bees[k].y- Flood.TutorialState.bees[k].height/2;
             
-        Flood.TutorialState.dropTween = Flood.TutorialState.add.tween(Flood.TutorialState.arrow).to({y: Flood.TutorialState.arrow.y+10}, 500, "Linear", true, 0, -1);
-        Flood.TutorialState.dropTween.yoyo(true, 0);
+            Flood.TutorialState.dropTween = Flood.TutorialState.add.tween(Flood.TutorialState.arrow).to({y:     Flood.TutorialState.arrow.y+10}, 500, "Linear", true, 0, -1);
+            Flood.TutorialState.dropTween.yoyo(true, 0);
+        }
     },
     checkFlood: function(colourArr)
     {

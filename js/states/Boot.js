@@ -5,6 +5,8 @@ Flood.BootState = {
 		this.stage.backgroundColor = '#ffffff';
 		this.load.image('loading-background', 'assets/images/Flood_loading-background.png');
 		this.load.image('loading-progress', 'assets/images/Flood_loading-progress.png');
+        
+        this.game.plugin=this.game.plugins.add(Phaser.Plugin.InvertPlugin);
 	},
 	create: function(){
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

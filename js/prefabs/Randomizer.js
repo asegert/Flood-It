@@ -10,6 +10,7 @@ Flood.Randomizer = function(state) {
      Flood.Randomizer.prototype.init = function(colours, y, x, width, height, random)
      {
          let scaleFactor = this.getScaleFactor(x, y, width, height);
+         console.log(scaleFactor);
          let xOffset = this.getXOffset(x, width, scaleFactor);//width
          
          let newBoard = new Array(y);
@@ -69,19 +70,10 @@ Flood.Randomizer = function(state) {
      };
      Flood.Randomizer.prototype.getScaleFactor = function(x, y, width, height)
      {
-         let innerWidth = window.innerWidth;
-         let innerHeight = window.innerHeight;
+         let innerWidth = 960;
+         let innerHeight = 640;
          let widthFactor = x*width;
          let heightFactor = y*Math.round(0.855 * height);
-
-         if(innerWidth>960)
-         {
-             innerWidth = 960;//9-105 945
-         }
-         if(innerHeight>640)
-         {
-             innerHeight = 640;//6-97 (83) 415 /3*2
-         }
          
          innerHeight = Math.floor((innerHeight/3)*2.5);
 
@@ -113,11 +105,7 @@ Flood.Randomizer = function(state) {
      };
      Flood.Randomizer.prototype.getXOffset = function(x, width, scaleFactor)
      {
-         let innerWidth = window.innerWidth;
-         if(innerWidth>960)
-         {
-             innerWidth = 960;
-         }
+         let innerWidth = 960;
          let comb = (x * width) * scaleFactor;
          let diff = innerWidth - comb;
          return diff/2;
