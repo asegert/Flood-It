@@ -54,7 +54,6 @@ Flood.GameState = {
     },
     getAdjacent: function(item)
     {
-        console.log(`x: ${item.x} y: ${item.y}`);
         let sameColour = true;
         
         if(item.x % 2 === 0)
@@ -82,7 +81,6 @@ Flood.GameState = {
     {
         if(startX > -1 && startX < this.board.length)
         {
-            console.log(`x: ${startX} y: ${startY}`);
             //Y is a valid index
             if(startY > -1 && startY < this.board[startX].length)
             {
@@ -96,7 +94,6 @@ Flood.GameState = {
         if(checkItem != undefined && item.texture === checkItem.texture)
         {
             //add to main group
-            console.log(`add`);
             if(checkItem.group != 'flood')
             {
                 checkItem.group = 'flood';
@@ -129,9 +126,6 @@ Flood.GameState = {
         {
             for(let j=0, len2 = Flood.GameState.board[i].length; j<len2; j++)
             {
-                console.log(i);
-                console.log(j);
-                console.log(Flood.GameState.board[i][j]);
                 if(Flood.GameState.board[i][j] != undefined && Flood.GameState.board[i][j].group === "flood")
                 {
                     if(Flood.GameState.board[i][j].sprite.y > lowY)
@@ -145,7 +139,7 @@ Flood.GameState = {
                     }
                     Flood.GameState.board[i][j].reColour('texture');
                     colourArray[colourArray.length] = Flood.GameState.board[i][j];
-                    console.log(Flood.GameState.getAdjacent(Flood.GameState.board[i][j]));
+                    Flood.GameState.getAdjacent(Flood.GameState.board[i][j]);
                 }
             }
         }
@@ -162,12 +156,10 @@ Flood.GameState = {
             {
                 Flood.GameState.bees[k].rotation = 0.1 * ((lowX - Flood.GameState.bees[k].x)/100);
             }
-            console.log(`rotation: ${Flood.GameState.bees[k].rotation}`);
             let move = Flood.GameState.add.tween(Flood.GameState.bees[k]).to({x: lowX, y: lowY}, 500, "Linear", true);
             move.onComplete.add(function()
             {
                 colourArray = colourArray.concat(Flood.GameState.adjacentRecolour);
-                console.log(Flood.GameState.adjacentRecolour);
                 for(let o=0, len=colourArray.length; o<len; o++)
                 {
                     colourArray[o].reColour('colour');
@@ -193,7 +185,6 @@ Flood.GameState = {
             Flood.GameState.beeIsMoving[Flood.GameState.bees[index].colour] = false;
             if(Flood.GameState.totalFloodiesRemaining === 0 && Flood.GameState.currentColour === Flood.GameState.bees[index].colour)
             {
-                console.log('gameOver');
                 let beekeeper = Flood.GameState.add.sprite(-500, 0, 'beekeeper');
                 beekeeper.animations.add('run');
                 beekeeper.animations.play('run', 15, true);

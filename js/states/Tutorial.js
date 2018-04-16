@@ -49,7 +49,12 @@ Flood.TutorialState = {
         
         this.hint = this.add.sprite(200, 300, 'hint');
         
-        this.game.time.events.add(Phaser.Timer.SECOND * 3, this.repositionArrow);
+        this.arrowTime = this.game.time.events.add(Phaser.Timer.SECOND * 3, function()
+        {
+            Flood.TutorialState.hint.loadTexture('hint2');
+            Flood.TutorialState.world.bringToTop(Flood.TutorialState.arrow);
+            this.repositionArrow();
+        }, this);
     },
     createButtons: function()
     {
@@ -79,16 +84,11 @@ Flood.TutorialState = {
             
         Flood.TutorialState.dropTween = Flood.TutorialState.add.tween(Flood.TutorialState.arrow).to({y: Flood.TutorialState.arrow.y+10}, 500, "Linear", true, 0, -1);
         Flood.TutorialState.dropTween.yoyo(true, 0);
-        
-        if(Flood.TutorialState.hint != undefined && Flood.TutorialState.hint.key === 'hint')
-        {
-            Flood.TutorialState.hint.loadTexture('hint2');
-            Flood.TutorialState.world.bringToTop(Flood.TutorialState.arrow);
-        }
     },
     checkFlood: function(colourArr)
     {
         Flood.TutorialState.arrow.alpha=0;
+        Flood.TutorialState.time.events.remove(Flood.TutorialState.arrowTime);
         if(Flood.TutorialState.hint != undefined)
         {
             Flood.TutorialState.hint.destroy();
@@ -107,11 +107,10 @@ Flood.TutorialState = {
             }
             
             let boardLoc= Flood.TutorialState.board[Flood.TutorialState.allData.Tutorial[0].arrowLanding[Flood.TutorialState.instructionValue][0]][Flood.TutorialState.allData.Tutorial[0].arrowLanding[Flood.TutorialState.instructionValue][1]].sprite;
-            console.log(boardLoc);
             
             let lowX = boardLoc.x;
             let lowY = boardLoc.y;
-            if(!Flood.TutorialState.beeIsMoving[Flood.TutorialState.currentColour])
+            if(!Flood.TutorialState.beeIsMoving[Flood.TutorialState.currentColour] && !Flood.TutorialState.beeIsMoving[Flood.TutorialState.allData.Tutorial[0].arrow[Flood.TutorialState.instructionValue-1]])
             {
                 Flood.TutorialState.beeIsMoving[Flood.TutorialState.currentColour] = true;
                 if(k>(Flood.TutorialState.bees.length/2)-1)
@@ -124,15 +123,14 @@ Flood.TutorialState = {
                 {
                     Flood.TutorialState.bees[k].rotation = 0.1 * ((lowX - Flood.TutorialState.bees[k].x)/100);
                 }
-                console.log(`rotation: ${Flood.TutorialState.bees[k].rotation}`);
                 let move = Flood.TutorialState.add.tween(Flood.TutorialState.bees[k]).to({x: lowX, y: lowY}, 500, "Linear", true);
                 move.onComplete.add(function()
                 {
                     for(let i = 0, len = Flood.TutorialState.instructionValue; i<=len; i++)
                     {
                         for(let j = 0, len2 = Flood.TutorialState.allData.Tutorial[0].switchers[i].length; j<len2; j++)
-                        {
-                            Flood.TutorialState.board[Flood.TutorialState.allData.Tutorial[0].switchers[i][j][0]][Flood.TutorialState.allData.Tutorial[0].switchers[i][j][1]].reColour(null);
+                        {   
+                        Flood.TutorialState.board[Flood.TutorialState.allData.Tutorial[0].switchers[i][j][0]][Flood.TutorialState.allData.Tutorial[0].switchers[i][j][1]].reColour(null);
                         }
                     }
                     Flood.TutorialState.board[Flood.TutorialState.allData.Tutorial[0].startX][Flood.TutorialState.allData.Tutorial[0].startY].reColour(null);
@@ -142,6 +140,11 @@ Flood.TutorialState = {
                     Flood.TutorialState.resetBee(k);
                 }, this);
             }
+        }
+        else
+        {
+            Flood.TutorialState.arrow.alpha = 1;
+            Flood.TutorialState.repositionArrow();
         }
     },
     resetBee: function(index)
@@ -159,10 +162,8 @@ Flood.TutorialState = {
             Flood.TutorialState.bees[index].x = 25 + (90 * index);
             Flood.TutorialState.bees[index].y = 500;
             Flood.TutorialState.beeIsMoving[Flood.TutorialState.bees[index].colour] = false;
-            console.log(Flood.TutorialState.totalFloodiesRemaining);
             if(Flood.TutorialState.instructionValue >= Flood.TutorialState.allData.Tutorial[0].arrow.length)
             {
-                console.log('gameOver');
                 let beekeeper = Flood.TutorialState.add.sprite(-500, 0, 'beekeeper');
                 beekeeper.animations.add('run');
                 beekeeper.animations.play('run', 15, true);
@@ -188,7 +189,7 @@ Flood.TutorialState = {
                 let runTween = Flood.TutorialState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
                 runTween.onComplete.add(function()
                 {
-                    Flood.TutorialState.game.state.start('Game');
+                    this.game.state.start('Game');
                 }, this);
             }
             else
