@@ -108,6 +108,7 @@ Flood.GameState = {
     },
     checkFlood: function(colourArr)
     {
+        Flood.GameState.game.input.enabled = false;
         Flood.GameState.currentColour = colourArr.key.replace("Bee", "");
         let k=0;
         for(let len=Flood.GameState.bees.length; k<len; k++)
@@ -231,6 +232,10 @@ Flood.GameState = {
                         }
                     }*/
                 }, this);
+            }
+            else
+            {
+                Flood.GameState.game.input.enabled = true;
             }
         }, this);
     },
