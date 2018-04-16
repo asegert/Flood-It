@@ -4,15 +4,6 @@ Flood.EndState = {
     create: function ()
     {
         this.add.sprite(0, 0, 'end');
-        /*this.add.sprite(0, 0, 'redHoneyJar');
-        this.add.sprite(200, 0, 'orangeHoneyJar');
-        this.add.sprite(400, 0, 'yellowHoneyJar');
-        this.add.sprite(600, 0, 'greenHoneyJar');
-        this.add.sprite(800, 0, 'blueHoneyJar');
-        this.add.sprite(0, 300, 'purpleHoneyJar');
-        this.add.sprite(200, 300, 'pinkHoneyJar');
-        this.add.sprite(400, 300, 'brownHoneyJar');
-        this.add.sprite(600, 300, 'whiteHoneyJar');*/
         this.honeyText = this.add.text(this.world.centerX, 40, `You Made ${Flood.HoneyType}`, {font: "40px Nosifer", fill: "#FF9900", stroke: "#FFFF00", strokeThickness: 5});
         this.honeyText.anchor.setTo(0.5, 0.5);
         this.jar = this.add.sprite(900, 150, `${Flood.HoneyPot}HoneyJar`);//800, 300
@@ -74,6 +65,17 @@ Flood.EndState = {
                 {
                     this.add.tween(this.flyBee2).to({rotation: 8}, 1000, "Linear", true);
                     this.add.tween(this.flyBee2).to({x: 1000, y: -50}, 500, "Linear", true);
+                    
+                    this.allData = JSON.parse(this.game.cache.getText('floodData'));
+                    Flood.currentRound++;
+                    if(Flood.currentRound < this.allData.Rounds.length)
+                    {
+                        this.add.button(500, 500, 'start', function()
+                        {
+                            this.game.state.start('Game');
+                        }, this);
+                    }
+                    
                 }, this);
                 
             }, this);
