@@ -55,6 +55,18 @@ Flood.TutorialState = {
             Flood.TutorialState.world.bringToTop(Flood.TutorialState.arrow);
             this.repositionArrow();
         }, this);
+        
+        console.log(this.game.scale.isLandscape);
+        if(!this.game.scale.isLandscape)
+        {
+            this.game.plugin.invert(this.world);
+        }
+        
+        window.addEventListener("orientationchange", function() {
+	       // Announce the new orientation number
+	       //alert(screen.orientation);
+            Flood.TutorialState.game.plugin.invert(Flood.TutorialState.world);
+        }, false);
     },
     createButtons: function()
     {
