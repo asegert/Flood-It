@@ -3,12 +3,15 @@ var Flood = Flood || {};
 Flood.TutorialState = {
      create: function ()
     {
-        //offset: 0:47, 0:75
+        //Pulls the JSON data
         this.allData = JSON.parse(this.game.cache.getText('floodData'));
+        //Add the background
         this.background = this.add.sprite(0, 0, 'bg');
+        //Tracks how many 'floodies' are not part of the flood
         this.totalFloodiesRemaining = -1;
+        //The current colour colouring the flood
         this.currentColour = null;
-        this.eventRunning = false;
+        //An array of any bees that are currently moving initialized to false
         this.beeIsMoving = [];
         this.beeIsMoving['red'] = false;
         this.beeIsMoving['orange'] = false;
@@ -20,9 +23,13 @@ Flood.TutorialState = {
         this.beeIsMoving['brown'] = false;
         this.beeIsMoving['white'] = false;
         this.beeIsMoving['black'] = false;
+        //Tracks which instruction is being worked on
         this.instructionValue = 0;
+        //An array for storing the bee buttons
         this.bees = new Array();
+        //Initializes the local board variables
         let board = null, boardX = 0, boardY = 0;
+        //Checks if a ranom or manual board is to be created and creates the board
         if(this.allData.Tutorial[0].Random)
         {
             board = this.allData.Tutorial[0].colourArray;
@@ -35,23 +42,30 @@ Flood.TutorialState = {
             boardX = board.length;
             boardY = board[0].length;
         }
+        //Creates a Randomizer
         let ran = new Flood.Randomizer(this);
+        //Complete board creation using the randomizer
         this.board = ran.init(board, boardX, boardY, this.allData.Tutorial[0].TileWidth, this.allData.Tutorial[0].TileHeight, this.allData.Tutorial[0].Random);
+        //Create the buttons
         this.createButtons();
+        //Set the starting floodie by making it part of the flood
         this.board[this.allData.Tutorial[0].startX][this.allData.Tutorial[0].startY].group = 'flood';
         this.board[this.allData.Tutorial[0].startX][this.allData.Tutorial[0].startY].sprite.loadTexture(`${this.board[this.allData.Tutorial[0].startX][this.allData.Tutorial[0].startY].texture}Floodie`);
-        
+        //Start the arrow pointing out the starting floodie
         let coords = this.board[this.allData.Tutorial[0].startX][this.allData.Tutorial[0].startY].sprite;
+        //Create the arrow
         this.arrow = this.add.sprite(coords.x+coords.width/2, coords.y-coords.height/2, 'arrow');
         this.arrow.anchor.setTo(0.5, 0.5);
         this.arrow.scale.setTo(0.5, 0.5);
+        //Start the tween to move the arrow
         this.dropTween = this.add.tween(this.arrow).to({y: this.arrow.y+10}, 500, "Linear", true, 0, -1);
         this.dropTween.yoyo(true, 0);
-        
+        //Create the initial hint to show
         this.hint = this.add.sprite(200, 300, 'hint');
-        
+        //Wait three seconds then move the arrow to the first bee to select
         this.arrowTime = this.game.time.events.add(Phaser.Timer.SECOND * 3, function()
         {
+            //Load the new hint and raise the arrow above it and reposition it
             Flood.TutorialState.hint.loadTexture('hint2');
             Flood.TutorialState.world.bringToTop(Flood.TutorialState.arrow);
             this.repositionArrow();
@@ -59,8 +73,9 @@ Flood.TutorialState = {
     },
     createButtons: function()
     {
-        let colourArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'white', 'black'];
-        
+        //Stores the colour array
+        let colourArray = this.allData.Tutorial[0].colourArray;
+        //Goes through the colour array to create all the bee buttons
         for(let i=0, len=colourArray.length; i<len; i++)
         {
             let color = this.add.button(25 + (90 * i), 500, `${colourArray[i]}Bee`, this.checkFlood, colourArray[i]);
@@ -71,28 +86,36 @@ Flood.TutorialState = {
     },
     repositionArrow: function()
     {
+        //Search for the bee colour that matches the colour the arrow must find
         let k=0;
         for(let len=Flood.TutorialState.bees.length; k<len; k++)
         {
             if(Flood.TutorialState.bees[k].colour === Flood.TutorialState.allData.Tutorial[0].arrow[Flood.TutorialState.instructionValue])
             {
+                //Break when found
                 break;
             }
         }
+        //Stop the drop tween (moves arrow up and down)
         Flood.TutorialState.dropTween.stop();
+        //If the bee found is a valid bee
         if(k != Flood.TutorialState.bees.length)
         {
+            //Reposition the arrow above the bee
             Flood.TutorialState.arrow.position.x=Flood.TutorialState.bees[k].x+Flood.TutorialState.bees[k].width/2;
             Flood.TutorialState.arrow.position.y=Flood.TutorialState.bees[k].y- Flood.TutorialState.bees[k].height/2;
-            
-            Flood.TutorialState.dropTween = Flood.TutorialState.add.tween(Flood.TutorialState.arrow).to({y:     Flood.TutorialState.arrow.y+10}, 500, "Linear", true, 0, -1);
+            //Restart the drop tween
+            Flood.TutorialState.dropTween = Flood.TutorialState.add.tween(Flood.TutorialState.arrow).to({y: Flood.TutorialState.arrow.y+10}, 500, "Linear", true, 0, -1);
             Flood.TutorialState.dropTween.yoyo(true, 0);
         }
     },
     checkFlood: function(colourArr)
     {
+        //Stop displaying the arrow
         Flood.TutorialState.arrow.alpha=0;
+        //If the second hint step was skipped stop the timer from causing it
         Flood.TutorialState.time.events.remove(Flood.TutorialState.arrowTime);
+        //Remove the hint
         if(Flood.TutorialState.hint != undefined)
         {
             Flood.TutorialState.hint.destroy();

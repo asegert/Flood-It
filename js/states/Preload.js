@@ -158,6 +158,38 @@ Flood.PreloadState = {
     {
         this.state.start('Story');
     }
+    /*
+    JSON:
+    
+    Rounds->
+            An array of round Objects
+                Board: Array holding the colour strings for the board (manual board)
+                BoardX: The number of rows on the board
+                BoardY: The number of columns on the board
+                startX: The x index of the starting point
+                startY: The y index of the starting point
+                TileWidth: The width of each comb, used for scaling boards that are too large
+                TileHeight: The height of each comb, used for scaling boards that are too large
+                colourArray: An array of all the colours used in order
+                honeyArray: An array of all the 'honey types' used to display the honey text at the end, same order as the colour array
+                filledBG: An array of the backgrounds that are used for the winning filled comb display, same order as the colour array
+                Random: A boolean indicating whether or not to use the board array for the board as created here (true), or to use the column number (BoardY) and row number (BoardX) to create a random board of those dimensions filled with random colours (false)
+    Tutorial->
+            An array of round Objects only one object should be present for one tutorial
+                Board: Array holding the colour strings for the board (manual board)
+                BoardX: The number of rows on the board
+                BoardY: The number of columns on the board
+                startX: The x index of the starting point
+                startY: The y index of the starting point
+                TileWidth: The width of each comb, used for scaling boards that are too large
+                TileHeight: The height of each comb, used for scaling boards that are too large
+                arrow: An array of colours that the arrow should point to indicating a move to be made
+                arrowLanding: An array of indices which correspond to the arrows as to where the bee will go. As the tutorial is designed to move step by step hardcoding this allows for faster computing.
+                switchers: A 2D array of indices per arrow. This indicates which board pieces now become part of the flood. As the tutorial is designed to move step by step hardcoding this allows for faster computing.
+                colourArray: An array of all the colours used in order
+                filledBG: An array of the backgrounds that are used for the winning filled comb display, same order as the colour array
+                Random: A boolean indicating whether or not to use the board array for the board as created here (true), or to use the column number (BoardY) and row number (BoardX) to create a random board of those dimensions filled with random colours (false). Although it is present it should not be used as much of the tutorial is designed to be hardcoded, that said if there is a desire to randomize this the general structure still exists to do so.
+    */
 };
 /*Copyright (C) Wayside Co. - All Rights Reserved
 * Unauthorized copying of this file, via any medium is strictly prohibited

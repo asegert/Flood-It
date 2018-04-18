@@ -3,11 +3,15 @@ var Flood = Flood || {};
 Flood.GameState = {
     create: function ()
     {
-        //offset: 0:47, 0:75
+        //Pulls the JSON data
         this.allData = JSON.parse(this.game.cache.getText('floodData'));
+        //Add the background
         this.background = this.add.sprite(0, 0, 'bg');
+        //Tracks how many 'floodies' are not part of the flood
         this.totalFloodiesRemaining = -1;
+        //The current colour colouring the flood
         this.currentColour = null;
+        //An array of any bees that are currently moving initialized to false
         this.beeIsMoving = [];
         this.beeIsMoving['red'] = false;
         this.beeIsMoving['orange'] = false;
@@ -19,8 +23,11 @@ Flood.GameState = {
         this.beeIsMoving['brown'] = false;
         this.beeIsMoving['white'] = false;
         this.beeIsMoving['black'] = false;
+        //An array for storing the bee buttons
         this.bees = new Array();
+        //Initializes the local board variables
         let board = null, boardX = 0, boardY = 0;
+        //Checks if a ranom or manual board is to be created and creates the board
         if(this.allData.Rounds[Flood.currentRound].Random)
         {
             board = this.allData.Rounds[Flood.currentRound].colourArray;
@@ -33,17 +40,32 @@ Flood.GameState = {
             boardX = board.length;
             boardY = board[0].length;
         }
+        //Creates a Randomizer
         let ran = new Flood.Randomizer(this);
+        //Complete board creation using the randomizer
         this.board = ran.init(board, boardX, boardY, this.allData.Rounds[Flood.currentRound].TileWidth, this.allData.Rounds[Flood.currentRound].TileHeight, this.allData.Rounds[Flood.currentRound].Random);
+        //Create the buttons
         this.createButtons();
+        //Set the starting floodie by making it part of the flood
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].group = 'flood';
         this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].sprite.loadTexture(`${this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].texture}Floodie`);
+        //Start the arrow pointing out the starting floodie
+        let coords = this.board[this.allData.Rounds[Flood.currentRound].startX][this.allData.Rounds[Flood.currentRound].startY].sprite;
+        //Create the arrow
+        this.arrow = this.add.sprite(coords.x+coords.width/2, coords.y-coords.height/2, 'arrow');
+        this.arrow.anchor.setTo(0.5, 0.5);
+        this.arrow.scale.setTo(0.5, 0.5);
+        //Start the tween to move the arrow
+        this.dropTween = this.add.tween(this.arrow).to({y: this.arrow.y+10}, 500, "Linear", true, 0, -1);
+        this.dropTween.yoyo(true, 0);
+        //Create an empty recolour array to be used later
         this.adjacentRecolour = [];
     },
     createButtons: function()
     {
-        let colourArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'white', 'black'];
-        
+        //Stores the colour array
+        let colourArray = this.allData.Rounds[Flood.currentRound].colourArray;
+        //Goes through the colour array to create all the bee buttons
         for(let i=0, len=colourArray.length; i<len; i++)
         {
             let color = this.add.button(25 + (90 * i), 500, `${colourArray[i]}Bee`, this.checkFlood, colourArray[i]);
@@ -241,7 +263,11 @@ Flood.GameState = {
     },
     update: function ()
     {
-        
+        if(this.arrow != undefined && this.input.activePointer.isDown)
+        {
+            this.dropTween.stop();
+            this.arrow.destroy();
+        }
     }
 };
 /*Copyright (C) Wayside Co. - All Rights Reserved
