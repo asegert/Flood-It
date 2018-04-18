@@ -15,10 +15,8 @@ Flood.BootState = {
         this.scale.forceOrientation(true, false); //Forces scaling to be horizontal - landscape
         
         
-        if(!this.game.scale.isLandscape)
-        {
-            Flood.game.plugin.invert(Flood.game.world);
-        }
+        Flood.game.plugin.setOrientation("Landscape");    
+        Flood.game.plugin.invert(Flood.game.world);
         
         window.addEventListener("orientationchange", function() {
 	       // Announce the new orientation number
