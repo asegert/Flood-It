@@ -8,6 +8,7 @@ Flood.TutorialState = {
         this.background = this.add.sprite(0, 0, 'bg');
         this.totalFloodiesRemaining = -1;
         this.currentColour = null;
+        this.eventRunning = false;
         this.beeIsMoving = [];
         this.beeIsMoving['red'] = false;
         this.beeIsMoving['orange'] = false;
@@ -55,12 +56,6 @@ Flood.TutorialState = {
             Flood.TutorialState.world.bringToTop(Flood.TutorialState.arrow);
             this.repositionArrow();
         }, this);
-        
-        window.addEventListener("orientationchange", function() {
-	       // Announce the new orientation number
-	       //alert(screen.orientation);
-            Flood.TutorialState.game.plugin.invert(Flood.TutorialState.world);
-        }, false);
     },
     createButtons: function()
     {

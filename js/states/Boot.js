@@ -13,6 +13,20 @@ Flood.BootState = {
 		this.scale.pageAlignHorizontally = true;
 		this.scale.pageAlignVertically = true;
         this.scale.forceOrientation(true, false); //Forces scaling to be horizontal - landscape
+        
+        
+        if(!this.game.scale.isLandscape)
+        {
+            Flood.game.plugin.invert(Flood.game.world);
+        }
+        
+        window.addEventListener("orientationchange", function() {
+	       // Announce the new orientation number
+	       //alert(screen.orientation);
+            Flood.game.plugin.invert(Flood.game.world);
+        }, false);
+        
+        
 		this.state.start('Preload');
 	}
 };

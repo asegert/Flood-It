@@ -97,6 +97,10 @@ Flood.EndState = {
         swing6.chain(swing7);
         swing1.start();
         
+    },
+    update: function()
+    {
+        
     }
 };
 /*Copyright (C) Wayside Co. - All Rights Reserved
