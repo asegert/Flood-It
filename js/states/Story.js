@@ -12,10 +12,6 @@ Flood.StoryState = {
                 this.add.sprite(0, 100, 'ins');
                 this.background.destroy();
                 this.background=null;
-                if(!Flood.StoryState.game.scale.isLandscape)
-                {
-                    Flood.StoryState.game.plugin.invert(Flood.StoryState.world);
-                }
                 this.world.bringToTop(start);
             }
             else

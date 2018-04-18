@@ -56,12 +56,6 @@ Flood.TutorialState = {
             this.repositionArrow();
         }, this);
         
-        console.log(this.game.scale.isLandscape);
-        if(!this.game.scale.isLandscape)
-        {
-            this.game.plugin.invert(this.world);
-        }
-        
         window.addEventListener("orientationchange", function() {
 	       // Announce the new orientation number
 	       //alert(screen.orientation);
