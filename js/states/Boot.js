@@ -5,22 +5,19 @@ Flood.BootState = {
 		this.stage.backgroundColor = '#ffffff';
 		this.load.image('loading-background', 'assets/images/Flood_loading-background.png');
 		this.load.image('loading-progress', 'assets/images/Flood_loading-progress.png');
-        
+        //Runs the plugin for forced mobile scaling
         this.game.plugin=this.game.plugins.add(Phaser.Plugin.InvertPlugin);
 	},
 	create: function(){
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.pageAlignHorizontally = true;
 		this.scale.pageAlignVertically = true;
-        this.scale.forceOrientation(true, false); //Forces scaling to be horizontal - landscape
+        this.scale.forceOrientation(true, false);
         
-        
+        //Runs plugin to force mobile scaling - set to landscape
         Flood.game.plugin.setOrientation("Landscape");    
         Flood.game.plugin.invert(Flood.game.world);
-        
         window.addEventListener("orientationchange", function() {
-	       // Announce the new orientation number
-	       //alert(screen.orientation);
             Flood.game.plugin.invert(Flood.game.world);
         }, false);
         
