@@ -1,26 +1,28 @@
 Phaser.Plugin.InvertPlugin = function (game, parent) {
-	Phaser.Plugin.call(this, game, parent);
-    Phaser.Plugin.Orient = "Landscape"; //Default
+	//Initialize the plugin to the game
+    Phaser.Plugin.call(this, game, parent);
+    //Set default orientation to landscape
+    Phaser.Plugin.Orient = "Landscape";
 };
 
 Phaser.Plugin.InvertPlugin.prototype = Object.create(Phaser.Plugin.prototype);
 Phaser.Plugin.InvertPlugin.prototype.constructor = Phaser.Plugin.SamplePlugin;
 
 Phaser.Plugin.InvertPlugin.prototype.invert = function (object) {
+    //Stops the plugin from running if the device is a desktop
     if(!Phaser.Device.desktop)
     {
-        console.log(screen.orientation);
+        //Stores the screen orientation
         let screenOrient = screen.orientation;
-    
-        console.log(object);
-        console.log(Phaser.Plugin.Orient);
+        //If the object (world) does not have it's original values (the ones coded by the programmer) stored do so
         if(object.og===undefined)
         {
             object.og=[object.width, object.height, object.rotation];
         }
-    
+        //Check the screen orientation 0=portrait 90,-90= Landscape left, right
         if(screenOrient.angle === 0)
         {
+            //Check if portrait or landscape is being forced and change values accordingly
             if(Phaser.Plugin.Orient === "Portrait")
             {
                 //Portrait
@@ -42,6 +44,7 @@ Phaser.Plugin.InvertPlugin.prototype.invert = function (object) {
         }
         else if(screenOrient.angle === -90)
         {
+            //Check if portrait or landscape is being forced and change values accordingly
             if(Phaser.Plugin.Orient === "Portrait")
             {
                 //Portrait
@@ -63,6 +66,7 @@ Phaser.Plugin.InvertPlugin.prototype.invert = function (object) {
         }
         else
         {
+            //Check if portrait or landscape is being forced and change values accordingly
             if(Phaser.Plugin.Orient === "Portrait")
             {
                 //Portrait
@@ -82,10 +86,11 @@ Phaser.Plugin.InvertPlugin.prototype.invert = function (object) {
                 object.rotation = object.og[2];
             }
         }
-
+        //Refresh the scale
         Phaser.ScaleManager.refresh;
     }
 };
 Phaser.Plugin.InvertPlugin.prototype.setOrientation = function (orient) {
+    //Set the orientation
     Phaser.Plugin.Orient = orient;
 };

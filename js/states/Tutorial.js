@@ -120,6 +120,7 @@ Flood.TutorialState = {
         {
             Flood.TutorialState.hint.destroy();
         }
+        //Locate the index of the current bee if it matches the instruction
         let tempColour = colourArr.key.replace("Bee", "");
         if(tempColour === Flood.TutorialState.allData.Tutorial[0].arrow[Flood.TutorialState.instructionValue])
         {
@@ -132,9 +133,9 @@ Flood.TutorialState = {
                     break;
                 }
             }
-            
+            //Get the location where the bee will 'fly' to
             let boardLoc= Flood.TutorialState.board[Flood.TutorialState.allData.Tutorial[0].arrowLanding[Flood.TutorialState.instructionValue][0]][Flood.TutorialState.allData.Tutorial[0].arrowLanding[Flood.TutorialState.instructionValue][1]].sprite;
-            
+            //Move the bee
             let lowX = boardLoc.x;
             let lowY = boardLoc.y;
             if(!Flood.TutorialState.beeIsMoving[Flood.TutorialState.currentColour] && !Flood.TutorialState.beeIsMoving[Flood.TutorialState.allData.Tutorial[0].arrow[Flood.TutorialState.instructionValue-1]])
@@ -153,21 +154,23 @@ Flood.TutorialState = {
                 let move = Flood.TutorialState.add.tween(Flood.TutorialState.bees[k]).to({x: lowX, y: lowY}, 500, "Linear", true);
                 move.onComplete.add(function()
                 {
+                    //Recolour all relevant tiles. The current instruction switchers and all those who came before
                     for(let i = 0, len = Flood.TutorialState.instructionValue; i<=len; i++)
                     {
                         for(let j = 0, len2 = Flood.TutorialState.allData.Tutorial[0].switchers[i].length; j<len2; j++)
                         {   
-                        Flood.TutorialState.board[Flood.TutorialState.allData.Tutorial[0].switchers[i][j][0]][Flood.TutorialState.allData.Tutorial[0].switchers[i][j][1]].reColour(null);
+                            Flood.TutorialState.board[Flood.TutorialState.allData.Tutorial[0].switchers[i][j][0]][Flood.TutorialState.allData.Tutorial[0].switchers[i][j][1]].reColour(null);
                         }
                     }
                     Flood.TutorialState.board[Flood.TutorialState.allData.Tutorial[0].startX][Flood.TutorialState.allData.Tutorial[0].startY].reColour(null);
-                    
+                    //Increase to the next instruction
                     Flood.TutorialState.instructionValue++;
-                    
+                    //Reset the bee
                     Flood.TutorialState.resetBee(k);
                 }, this);
             }
         }
+        //Else restart the arrow to show the right bee to click
         else
         {
             Flood.TutorialState.arrow.alpha = 1;
@@ -176,6 +179,7 @@ Flood.TutorialState = {
     },
     resetBee: function(index)
     {
+        //Reset the bee to it's original location
         let x=700;
         if(Flood.TutorialState.bees[index].scale.x === -0.9)
         {
@@ -189,20 +193,22 @@ Flood.TutorialState = {
             Flood.TutorialState.bees[index].x = 25 + (90 * index);
             Flood.TutorialState.bees[index].y = 500;
             Flood.TutorialState.beeIsMoving[Flood.TutorialState.bees[index].colour] = false;
+            //If the end of the instructions has been reached, thus the round is over
             if(Flood.TutorialState.instructionValue >= Flood.TutorialState.allData.Tutorial[0].arrow.length)
             {
+                //Run the beekeeper sprite
                 let beekeeper = Flood.TutorialState.add.sprite(-500, 0, 'beekeeper');
                 beekeeper.animations.add('run');
                 beekeeper.animations.play('run', 15, true);
-                
+                //Add the filled floodies
                 let combTexture = `${Flood.TutorialState.bees[index].colour}FilledFloodie`;
                 let bgTexture = Flood.TutorialState.allData.Tutorial[0].filledBG[index];
-                
+                //If necessary change the background texture
                 if(bgTexture != null)
                 {
                    this.background.loadTexture(bgTexture); 
                 }
-                
+                //Set the filled floodies
                 for(let col1 = 0, col1Len = Flood.TutorialState.board.length; col1<col1Len; col1++)
                 {
                     for(let col2 = 0, col2Len = Flood.TutorialState.board[col1].length; col2<col2Len; col2++)
@@ -213,22 +219,20 @@ Flood.TutorialState = {
                         }
                     }
                 }
+                //Once the beekeeper has run across the screen start the next stage
                 let runTween = Flood.TutorialState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
                 runTween.onComplete.add(function()
                 {
                     this.game.state.start('Game');
                 }, this);
             }
+            //If there are more instructions show the next instruction
             else
             {
                 Flood.TutorialState.arrow.alpha = 1;
                 Flood.TutorialState.repositionArrow();
             }
         }, this);
-    },
-    update: function ()
-    {
-        
     }
 };
 /*Copyright (C) Wayside Co. - All Rights Reserved
