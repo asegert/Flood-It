@@ -2,7 +2,7 @@ Phaser.Plugin.InvertPlugin = function (game, parent) {
 	//Initialize the plugin to the game
     Phaser.Plugin.call(this, game, parent);
     //Set default orientation to landscape
-    Phaser.Plugin.Orient = "Landscape";
+    Phaser.Plugin.Orient = "Landscape";//Set default by dim
 };
 
 Phaser.Plugin.InvertPlugin.prototype = Object.create(Phaser.Plugin.prototype);
