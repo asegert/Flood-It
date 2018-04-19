@@ -3,6 +3,9 @@ var Flood = Flood || {};
 Flood.EndState = {
     create: function ()
     {
+        //Add buzzing audio
+        this.buzz=this.add.audio('buzzing');
+        this.buzz.play('', 0, 1, true);
         //Adds the background
         this.add.sprite(0, 0, 'end');
         //Adds the text of the 'type' of honey you made-dependant on the last flood colour
@@ -72,6 +75,8 @@ Flood.EndState = {
                     //If there is another round to be played a button is displayed to allow replay
                     this.allData = JSON.parse(this.game.cache.getText('floodData'));
                     Flood.currentRound++;
+                    //Stop the buzzing
+                    Flood.EndState.buzz.stop();
                     if(Flood.currentRound < this.allData.Rounds.length)
                     {
                         this.add.button(500, 500, 'start', function()

@@ -152,6 +152,9 @@ Flood.PreloadState = {
         
         this.load.spritesheet('beekeeper', 'assets/images/Flood_BeekeeperSprite.png', 548, 610, 5);
         
+        this.load.audio('FloodIt', ['assets/audio/FloodIt.mp3', 'assets/audio/FloodIt.m4a', 'assets/audio/FloodIt.ogg']);
+        this.load.audio('buzzing', ['assets/audio/buzzing.mp3', 'assets/audio/buzzing.m4a', 'assets/audio/buzzing.ogg']);
+        
         this.load.text('floodData', 'assets/data/floodData.json');
     },
     create: function ()

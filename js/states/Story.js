@@ -3,6 +3,9 @@ var Flood = Flood || {};
 Flood.StoryState = {
     create: function ()
     {
+        //Add background music
+        Flood.music = this.add.audio('FloodIt');
+        Flood.music.play('', 0, 1, true);
         //Main background with title
         this.background = this.add.sprite(0, 0, 'main');
         //Button to proceed

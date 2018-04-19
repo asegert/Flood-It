@@ -219,6 +219,9 @@ Flood.TutorialState = {
                         }
                     }
                 }
+                //Add buzzing audio
+                this.buzz=this.add.audio('buzzing');
+                this.buzz.play();
                 //Once the beekeeper has run across the screen start the next stage
                 let runTween = Flood.TutorialState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
                 runTween.onComplete.add(function()
