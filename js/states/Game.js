@@ -250,9 +250,29 @@ Flood.GameState = {
                 let runTween = Flood.GameState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
                 runTween.onComplete.add(function()
                 {
+                     //Wait to transition to next screen
+                    this.time.events.add(Phaser.Timer.SECOND * 5, function()
+                    {
                         Flood.HoneyType = Flood.GameState.allData.Rounds[Flood.currentRound].honeyArray[index];
                         Flood.HoneyPot = this.currentColour;
                         Flood.GameState.game.state.start('End');
+                    }, this);
+                    //For each tile in the board at a random time have them fall during a camera shake
+                    for(let i=0, len1=Flood.GameState.board.length; i<len1; i++)
+                    {
+                        for(let j=0, len2=Flood.GameState.board[i].length; j<len2; j++)
+                        {
+                            this.game.camera.shake(0.005, 3000);
+                            this.time.events.add(Phaser.Timer.SECOND * ((Math.random()*3)+0.1), function(item, i, j)
+                            {
+                                if(item[i][j]!=undefined)
+                                {
+                                    item[i][j].fallTween.start();
+                                    item[i][j].fallTweenEnd.start();
+                                }
+                            }, this, Flood.GameState.board, i, j);
+                        }
+                    }
                 }, this);
             }
             //If the flood is not complete allow bees to be clicked again

@@ -226,7 +226,27 @@ Flood.TutorialState = {
                 let runTween = Flood.TutorialState.add.tween(beekeeper).to({x: 1000}, 3000, "Linear", true);
                 runTween.onComplete.add(function()
                 {
-                    this.game.state.start('Game');
+                    //Wait to transition to next screen
+                    this.time.events.add(Phaser.Timer.SECOND * 5, function()
+                    {
+                        this.game.state.start('Game');
+                    }, this);
+                    //For each tile in the board at a random time have them fall during a camera shake
+                    for(let i=0, len1=Flood.TutorialState.board.length; i<len1; i++)
+                    {
+                        for(let j=0, len2=Flood.TutorialState.board[i].length; j<len2; j++)
+                        {
+                            this.game.camera.shake(0.005, 3000);
+                            this.time.events.add(Phaser.Timer.SECOND * ((Math.random()*3)+0.1), function(item, i, j)
+                            {
+                                if(item[i][j]!=undefined)
+                                {
+                                    item[i][j].fallTween.start();
+                                    item[i][j].fallTweenEnd.start();
+                                }
+                            }, this, Flood.TutorialState.board, i, j);
+                        }
+                    }
                 }, this);
             }
             //If there are more instructions show the next instruction

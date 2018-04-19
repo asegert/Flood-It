@@ -13,6 +13,10 @@ Flood.Item = function(state) {
          this.sprite = this.createSprite(data[0], data[1], data[2]);
          //Create an empty end sprite which will overlay the comb with the floodie
          this.endSprite = this.createSprite(data[0], data[1], null);
+         //Create fall tween
+         var varTime = (Math.floor((Math.random()*1000))+1000);
+         this.fallTween = this.state.add.tween(this.sprite).to({y: Flood.game.height*1.5}, varTime);
+         this.fallTweenEnd = this.state.add.tween(this.endSprite).to({y: Flood.game.height*1.5}, varTime);
          //Track the item of the sprite from the sprite
          this.sprite.item = this;
          //Store the texture
