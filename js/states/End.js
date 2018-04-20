@@ -77,12 +77,14 @@ Flood.EndState = {
                     Flood.currentRound++;
                     //Stop the buzzing
                     Flood.EndState.buzz.stop();
+                    
                     if(Flood.currentRound < this.allData.Rounds.length)
                     {
-                        this.add.button(500, 500, 'start', function()
+                        let b = Flood.EndState.add.button(650, 500, 'start', function()
                         {
-                            this.game.state.start('Game');
+                            Flood.EndState.game.state.start('Game');
                         }, this);
+                        b.scale.setTo(0.7, 0.7);
                     }
                     
                 }, this);

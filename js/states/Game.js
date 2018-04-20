@@ -255,6 +255,7 @@ Flood.GameState = {
                     {
                         Flood.HoneyType = Flood.GameState.allData.Rounds[Flood.currentRound].honeyArray[index];
                         Flood.HoneyPot = this.currentColour;
+                        Flood.GameState.game.input.enabled = true;
                         Flood.GameState.game.state.start('End');
                     }, this);
                     //For each tile in the board at a random time have them fall during a camera shake
